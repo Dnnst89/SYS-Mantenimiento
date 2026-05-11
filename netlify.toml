@@ -1,0 +1,16 @@
+# Netlify build for Next.js (App Router). Connect the repo in the Netlify UI;
+# these values override dashboard defaults when present.
+# https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Optional: stricter caching for static assets (Next sets its own for app routes).
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

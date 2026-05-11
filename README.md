@@ -1,227 +1,266 @@
-# SYS Mantenimiento — Guía para empezar (equipo de 3)
+# SYS Mantenimiento
 
-Este documento está pensado para **personas sin experiencia previa en React o Next.js**. Si algo no te queda claro, es normal: vuelve aquí, abre los enlaces de “Aprender paso a paso” y pregunta en el equipo.
+Sitio corporativo construido con **Next.js** (App Router), **React** y **Tailwind CSS v4**. Incluye **español** (rutas sin prefijo) e **inglés** (bajo `/en`).
 
----
-
-## 1. Qué es este proyecto (en pocas palabras)
-
-- **React**: biblioteca de JavaScript para construir **interfaces** (botones, formularios, pantallas) con **componentes** reutilizables.
-- **Next.js**: framework sobre React que añade **rutas**, **servidor**, optimizaciones y una forma estándar de organizar una app web.
-- Este repo usa la **App Router** de Next.js: la carpeta `app/` define las **páginas** y el diseño general.
-
-En tu máquina corre una **aplicación web local**; al guardar archivos, la mayoría de los cambios se ven al instante en el navegador.
+Este documento mezcla **referencia técnica** y una **guía para quien empieza** con React/Next.js.
 
 ---
 
-## 2. Lo que tienen que instalar (una vez por computadora)
+## Tabla de contenidos
 
-| Herramienta | Para qué sirve |
-|-------------|----------------|
-| **[Node.js](https://nodejs.org/)** (versión **LTS**) | Ejecuta JavaScript fuera del navegador y trae **npm** para instalar dependencias del proyecto. |
-| **[Git](https://git-scm.com/downloads)** | Control de versiones: guardar cambios, ramas y sincronizar con GitHub. |
-| **Editor de código** | Recomendado: [Visual Studio Code](https://code.visualstudio.com/) (gratis). |
+1. [Stack y requisitos](#stack-y-requisitos)
+2. [Inicio rápido](#inicio-rápido)
+3. [Scripts NPM](#scripts-npm)
+4. [Internacionalización (ES / EN)](#internacionalización-es--en)
+5. [Rutas principales](#rutas-principales)
+6. [Estructura del repositorio](#estructura-del-repositorio)
+7. [Configuración relevante](#configuración-relevante)
+8. [CI/CD (GitHub Actions + Netlify)](#cicd-github-actions--netlify)
+9. [ESLint y calidad](#eslint-y-calidad)
+10. [Git y flujo en equipo](#git-y-flujo-en-equipo)
+11. [Aprender más (enlaces)](#aprender-más-enlaces)
+12. [Opcionales (Prettier, shadcn/ui)](#opcionales-prettier-shadcnui)
+13. [Problemas frecuentes](#problemas-frecuentes)
+14. [Resumen día 1](#resumen-día-1)
 
-**Comprobar que todo está bien** (en una terminal: PowerShell en Windows, Terminal en Mac/Linux):
+---
+
+## Stack y requisitos
+
+| Tecnología | Versión orientativa |
+|------------|---------------------|
+| [Node.js](https://nodejs.org/) | **22** (`.nvmrc`; Netlify también fija Node 22) |
+| [Next.js](https://nextjs.org/docs) | 16.x (App Router) |
+| [React](https://react.dev/) | 19.x |
+| [Tailwind CSS](https://tailwindcss.com/docs) | 4.x (`@tailwindcss/postcss`) |
+
+**También:** [Git](https://git-scm.com/downloads) y un editor (p. ej. [VS Code](https://code.visualstudio.com/)).
+
+Comprobar en terminal:
 
 ```bash
-node -v
+node -v   # debe ser v22.x si sigues .nvmrc
 npm -v
 git --version
 ```
 
-Deberían aparecer números de versión sin errores.
+Si usas [nvm](https://github.com/nvm-sh/nvm) / nvm-windows: `nvm use` en la raíz del repo respeta `.nvmrc`.
 
 ---
 
-## 3. Git y GitHub (trabajar en equipo sin pisarse)
-
-### Conceptos mínimos
-
-- **Repositorio (repo)**: carpeta del proyecto con historial de cambios (Git).
-- **Commit**: “foto” de los cambios con un mensaje que explique qué hiciste.
-- **Rama (branch)**: línea de trabajo paralela (por ejemplo una rama por feature o por persona).
-- **Push / pull**: subir cambios al remoto (GitHub) / bajar los del remoto.
-
-### Flujo recomendado para el grupo
-
-1. **Clonar** el repo (copiarlo desde GitHub a tu PC):
-
-   ```bash
-   git clone <URL-del-repositorio-en-GitHub>
-   cd SYS-Mantenimiento
-   ```
-
-2. Antes de trabajar, **actualizar** la rama principal:
-
-   ```bash
-   git checkout main
-   git pull origin main
-   ```
-
-3. Crear una **rama** para tu tarea:
-
-   ```bash
-   git checkout -b nombre-de-tu-rama
-   ```
-
-4. Hacer cambios, **guardar**, luego:
-
-   ```bash
-   git status
-   git add .
-   git commit -m "Describe en una frase lo que cambiaste"
-   git push -u origin nombre-de-tu-rama
-   ```
-
-5. En GitHub, abrir un **Pull Request** hacia `main` para que otra persona **revise** antes de unir código.
-
-### Dónde aprender Git/GitHub (orden sugerido)
-
-- [Getting started — Git Documentation](https://git-scm.com/doc)
-- [GitHub Docs: Collaborate](https://docs.github.com/en/get-started/quickstart/hello-world)
-- [Learn Git Branching](https://learngitbranching.js.org/) (interactivo, muy didáctico)
-
----
-
-## 4. Primera vez en el proyecto: instalar dependencias
-
-En la carpeta del proyecto (`SYS-Mantenimiento`):
+## Inicio rápido
 
 ```bash
+git clone <URL-del-repositorio>
+cd SYS-Mantenimiento
 npm install
-```
-
-Eso crea la carpeta `node_modules/` con las librerías listadas en `package.json`. **No subas `node_modules` a Git**: ya está ignorada en `.gitignore`.
-
----
-
-## 5. Comandos que usarán todos los días
-
-En la raíz del proyecto:
-
-| Comando | Qué hace |
-|---------|----------|
-| `npm run dev` | Arranca el **servidor de desarrollo**. Ver la app en el navegador. |
-| `npm run build` | **Compila** la app para producción (comprueba que no haya errores de build). |
-| `npm run start` | Sirve la **versión ya compilada** (útil para probar como en producción; antes hay que hacer `build`). |
-| `npm run lint` | Ejecuta **ESLint**: busca problemas de código y malas prácticas según la config del proyecto. |
-
-**Desarrollo normal:** abre una terminal, ejecuta:
-
-```bash
 npm run dev
 ```
 
-Luego entra en el navegador a: [http://localhost:3000](http://localhost:3000)
+Abre [http://localhost:3000](http://localhost:3000). Si el puerto está ocupado, Next suele usar el siguiente (mira la salida en consola).
 
-Si el puerto 3000 está ocupado, Next.js suele sugerir otro (por ejemplo 3001); mira el mensaje en la terminal.
+**Producción local:**
 
----
-
-## 6. Dónde está el código (mapa rápido)
-
-| Ruta | Qué hay |
-|------|---------|
-| `app/page.js` | **Página de inicio** (lo que ves en `/`). Buen lugar para empezar a experimentar. |
-| `app/layout.js` | **Layout** compartido (estructura que envuelve varias páginas). |
-| `app/globals.css` | Estilos globales y configuración de **Tailwind CSS**. |
-| `public/` | Archivos estáticos (imágenes, iconos) servidos tal cual. |
-| `eslint.config.mjs` | Configuración de **ESLint** del proyecto. |
-| `next.config.mjs` | Configuración de **Next.js**. |
-| `package.json` | Scripts (`dev`, `build`, …) y lista de dependencias. |
-
-Cuando agreguen más pantallas, lo habitual es crear carpetas dentro de `app/` (por ejemplo `app/dashboard/page.js` para la ruta `/dashboard`). La documentación de Next.js explica esto en detalle.
+```bash
+npm run build
+npm run start
+```
 
 ---
 
-## 7. Aprender React y Next.js (ruta amigable para principiantes)
+## Scripts NPM
 
-No hace falta leer todo de golpe. Orden sugerido:
-
-1. **React — conceptos base**  
-   - [Learn React](https://react.dev/learn) (sitio oficial, actualizado).
-
-2. **Next.js — tutorial guiado**  
-   - [Learn Next.js](https://nextjs.org/learn)
-
-3. **Next.js — referencia cuando busquen “cómo se hace X”**  
-   - [Next.js Documentation](https://nextjs.org/docs)
-
-4. **Estilos con Tailwind** (ya viene en el proyecto)  
-   - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor de desarrollo con recarga rápida. |
+| `npm run build` | Compilación de producción (`next build`). |
+| `npm run start` | Sirve la build (tras `npm run build`). |
+| `npm run lint` | ESLint según `eslint.config.mjs` y `eslint-config-next`. |
 
 ---
 
-## 8. ESLint (ya configurado)
+## Internacionalización (ES / EN)
 
-**ESLint** analiza el código y avisa de errores y estilos problemáticos. Ayuda a que el código del equipo sea más **consistente** y con menos bugs evitables.
+- **Español:** rutas en la raíz (`/`, `/proyectos`, `/servicios`, …).
+- **Inglés:** mismas ideas bajo **`/en`** (`/en`, `/en/projects`, `/en/services`, …).
 
-- Ejecutar: `npm run lint`
-- Si sale un error que no entienden, copien el mensaje y busquen en la [documentación de ESLint](https://eslint.org/docs/latest/) o pregunten en el equipo.
+La lógica de enlaces alternos y navegación vive sobre todo en **`lib/locale.js`**. Convenciones y mapas ES ↔ EN están documentados ahí mediante constantes como `NAV_ES` / `NAV_EN` y `getAlternateLocalePath`.
 
-La configuración del proyecto está en `eslint.config.mjs` y usa las reglas recomendadas para Next.js (`eslint-config-next`).
-
----
-
-## 9. Prettier (formateo automático) — opcional pero muy útil
-
-**Prettier** no viene instalado en este repo todavía. Sirve para que **indentación, comillas y saltos de línea** queden iguales en todos los archivos, sin discutir estilos a mano.
-
-**Qué hacer cuando el equipo quiera unificar formato:**
-
-1. Instalar como dependencia de desarrollo:
-
-   ```bash
-   npm install -D prettier
-   ```
-
-2. Crear en la raíz un archivo `.prettierrc` (JSON) con reglas acordadas (o empezar con la configuración por defecto de Prettier).
-
-3. (Recomendado) En VS Code, instalar la extensión **Prettier** y activar “format on save”.
-
-Más información: [Prettier — Documentación](https://prettier.io/docs/en/)
+Componentes que muestran textos por idioma reciben a veces una prop **`locale`** (`'es' | 'en'`), p. ej. la landing principal y los bloques del home.
 
 ---
 
-## 10. shadcn/ui (componentes de interfaz) — para cuando ya toquen UI con confianza
+## Rutas principales
 
-**shadcn/ui** no es una librería que se “instala” como las demás de un solo comando opaco: **copia componentes** a tu proyecto (sobre Tailwind y otras bases), y ustedes son dueños del código.
+### Español (sin prefijo)
 
-**Cuándo usarlo:** cuando necesiten botones, diálogos, tablas, formularios accesibles y con buen aspecto sin diseñar todo desde cero.
+| Ruta | Contenido (resumen) |
+|------|----------------------|
+| `/` | Home: banner, rejilla de sectores, carrusel de marcas, bloque intro. |
+| `/proyectos` | Misma landing que `/` (migas y título orientados a “Proyectos”). |
+| `/servicios`, `/nosotros`, `/proveedores`, `/contacto` | Páginas de contenido (plantilla tipo `SimpleRoutePage`). |
+| `/sectores/[slug]` | Detalle por sector (`residencial`, `comercial`, `industrial`, `institucional`). Definiciones en `lib/sectors.js`. |
 
-**Por dónde empezar (oficial):**
+### Inglés (`/en/...`)
 
-- [shadcn/ui — Documentación](https://ui.shadcn.com/)
-- En la doc eligen **Next.js** y siguen los pasos de instalación (`npx shadcn@latest init`, etc.). Háganlo **en consenso** del equipo para que todos tengan la misma base.
+| Ruta | Notas |
+|------|--------|
+| `/en`, `/en/projects`, `/en/services`, `/en/about`, `/en/suppliers`, `/en/contact` | Equivalentes a las páginas ES. |
+| `/en/sectors/[slug]` | Sectores con slugs en inglés (`residential`, `commercial`, etc.). |
 
 ---
 
-## 11. Problemas frecuentes
+## Estructura del repositorio
+
+| Ruta | Uso |
+|------|-----|
+| `app/` | App Router: layouts, páginas, `globals.css`. |
+| `app/layout.js` | Layout raíz (fuentes, header, footer, envoltorio de página). |
+| `app/page.js`, `app/en/page.js` | Home por idioma; delegan en `HomeLanding`. |
+| `components/` | UI reutilizable (`header/`, `footer/`, `home/`, etc.). |
+| `components/home/HomeLanding.jsx` | Landing compartida (grid + carrusel + artículo intro). |
+| `lib/locale.js` | Rutas de navegación y alternancia de idioma. |
+| `lib/sectors.js` | Datos de sectores (URLs, textos ES/EN, imágenes). |
+| `lib/homeShowcaseContent.js` | Nombres para el carrusel de marcas (placeholders hasta logos en `/public`). |
+| `public/` | Estáticos (p. ej. `logo-sys-mantenimiento.png`). |
+| `next.config.mjs` | Next (`images.remotePatterns` para Unsplash, etc.). |
+| `eslint.config.mjs` | ESLint. |
+| `netlify.toml` | Build y opciones para despliegue en Netlify. |
+| `.github/workflows/ci.yml` | Pipeline CI (lint + build). |
+| `.nvmrc` | Versión de Node recomendada (22). |
+| `AGENTS.md` | Notas para contribuidores/IA sobre convenciones de Next en este repo. |
+
+**Nota sobre Next:** las APIs pueden diferir entre versiones; si cambias Next, revisa la guía oficial y avisos de deprecación aplicables a vuestra versión.
+
+---
+
+## Configuración relevante
+
+### Variables de entorno
+
+El proyecto puede crecer hacia `.env.local` para secretos y URLs privadas (no subir al repo; `.gitignore` ignora `.env*`).
+
+### Imágenes remotas
+
+`next.config.mjs` decl **`images.remotePatterns`** para `images.unsplash.com`. Si añades otro dominio de imágenes, extiende ahí las reglas o usa archivos en `public/`.
+
+### Netlify (`netlify.toml`)
+
+- **Build:** `npm run build`
+- **Publish:** `.next`
+- **Node:** 22 (`[build.environment]`)
+- Cabeceras opcionales para caché de `/_next/static/*`
+
+Si en el panel de Netlify defines otro comando o directorio de publicación, lo que está en **`netlify.toml`** suele prevalecer al importar el repo.
+
+---
+
+## CI/CD (GitHub Actions + Netlify)
+
+### GitHub Actions (`.github/workflows/ci.yml`)
+
+En **push** y **pull request** contra `main` o `master`:
+
+1. Checkout del código  
+2. Node según `.nvmrc`, caché de `npm`  
+3. **`npm ci`** → **`npm run lint`** → **`npm run build`**
+
+Así CI valida lo mismo que una build exitosa antes de fusionar cambios.
+
+### Netlify (CD)
+
+1. Cuenta en [Netlify](https://www.netlify.com/) → **Importar desde Git**.  
+2. Conectar este repositorio; el archivo **`netlify.toml`** puede rellenar comando y carpeta de publicación.  
+3. Tras cada push a la rama de producción, Netlify ejecuta la build configurada.
+
+**Local:** carpeta `.netlify` (estado del CLI) está en `.gitignore`.
+
+---
+
+## ESLint y calidad
+
+```bash
+npm run lint
+```
+
+Ayuda a mantener código consistente y evita patrones problemáticos. La configuración extiende reglas recomendadas de Next (`eslint-config-next`).
+
+---
+
+## Git y flujo en equipo
+
+### Conceptos rápidos
+
+- **Repo:** historial Git del proyecto.  
+- **Commit:** cambio etiquetado con mensaje descriptivo.  
+- **Rama:** línea de trabajo paralela antes de integrar en `main`.  
+
+### Flujo habitual
+
+```bash
+git checkout main && git pull origin main
+git checkout -b mi-rama
+
+# trabajo…
+
+git status
+git add .
+git commit -m "Breve descripción del cambio"
+git push -u origin mi-rama
+```
+
+Abrir **Pull Request** en GitHub hacia `main` para revisión antes de fusionar.
+
+Más ayuda:
+
+- [Documentación Git](https://git-scm.com/doc)  
+- [GitHub — colaboración](https://docs.github.com/en/get-started/quickstart/hello-world)  
+- [Learn Git Branching](https://learngitbranching.js.org/)  
+
+---
+
+## Aprender más (enlaces)
+
+1. React: [react.dev/learn](https://react.dev/learn)  
+2. Next.js: [nextjs.org/learn](https://nextjs.org/learn) y [documentación](https://nextjs.org/docs)  
+3. Tailwind: [tailwindcss.com/docs](https://tailwindcss.com/docs)  
+4. Next — despliegue: [Deploying](https://nextjs.org/docs/app/building-your-application/deploying)
+
+---
+
+## Opcionales (Prettier, shadcn/ui)
+
+**Prettier** no viene instalado; si el equipo quiere formato unificado:
+
+```bash
+npm install -D prettier
+```
+
+Crear `.prettierrc` y, en VS Code, “format on save” con la extensión Prettier. [prettier.io](https://prettier.io/docs/en/)
+
+**shadcn/ui** copia componentes al proyecto sobre Tailwind. Útil más adelante para piezas UI accesibles. [ui.shadcn.com](https://ui.shadcn.com/) — acordad `init` del equipo antes de distribuir rutas/componentes distintos.
+
+---
+
+## Problemas frecuentes
 
 | Síntoma | Qué probar |
 |---------|------------|
-| `command not found` al usar `node` o `npm` | Reinstalar Node LTS y **cerrar y abrir** la terminal. |
-| Errores raros después de cambiar ramas | `rm -rf node_modules` (Mac/Linux) o borrar carpeta `node_modules` en Windows, luego `npm install` de nuevo. |
-| La página no actualiza | Guardar el archivo; si sigue igual, parar el servidor (`Ctrl+C`) y `npm run dev` otra vez. |
-| Conflictos en Git | No borrar código a ciegas; avisar al equipo y revisar [resolving conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts). |
+| `command not found` con `node` / `npm` | Reinstalar Node, cerrar y abrir la terminal. Usar `.nvmrc` / Node 22. |
+| Errores tras cambiar de rama | Borrar `node_modules` y `npm install` de nuevo (`npm ci` en CI). |
+| Cambios sin verse en el navegador | Guardar archivos; `Ctrl+C` y `npm run dev` de nuevo. |
+| Conflictos Git | Resolver con calma siguiendo [guía GitHub sobre conflictos](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts). |
+| Build falla en Netlify igual que en local | Comparar logs con `npm run build` tras `npm ci`; mismas ramas Node (22). |
 
 ---
 
-## 12. Despliegue (más adelante)
+## Resumen día 1
 
-Cuando tengan una versión estable, una opción habitual para Next.js es **[Vercel](https://vercel.com/)** (misma empresa que mantiene Next.js). La guía oficial: [Deploying — Next.js Docs](https://nextjs.org/docs/app/building-your-application/deploying).
+1. Instalar **Node 22**, **Git**, editor recomendado.  
+2. `git clone` → `npm install`.  
+3. `npm run dev` → http://localhost:3000  
+4. Revisar `app/` y `components/` siguiendo la [tabla de estructura](#estructura-del-repositorio).  
+5. Antes de subir: **`npm run lint`** y **`npm run build`** (o confiar en el PR + CI).  
+6. Rama + PR antes de llevar código a producción (`main`).  
 
----
-
-## Resumen para el día 1
-
-1. Instalar **Node (LTS)**, **Git** y **VS Code**.  
-2. **Clonar** el repo y entrar a la carpeta.  
-3. `npm install`  
-4. `npm run dev` → abrir [http://localhost:3000](http://localhost:3000)  
-5. Editar `app/page.js` y ver el cambio en el navegador.  
-6. Antes de subir código: `npm run lint` y **commit** con mensaje claro.  
-7. Usar los enlaces de las secciones **7–10** según necesiten React, Next.js, GitHub, ESLint, Prettier o shadcn.
-
-¡Éxitos con el proyecto — aprender en equipo suele ser más rápido que solo!
+¿Dudas sobre React o Next? Revisa [Aprender más](#aprender-más-enlaces) — aprender en equipo suele ir más rápido.

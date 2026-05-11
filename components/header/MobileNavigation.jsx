@@ -12,9 +12,16 @@ export default function MobileNavigation() {
   const panelId = useId();
   const [headerH, setHeaderH] = useState(72);
 
-  useEffect(() => setMounted(true), []);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setOpen(false);
+  }
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   useLayoutEffect(() => {
     const el = document.getElementById("site-header");
