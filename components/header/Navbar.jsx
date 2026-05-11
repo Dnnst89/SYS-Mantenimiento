@@ -25,39 +25,59 @@ function FacebookIcon({ className }) {
   );
 }
 
-export default function Navbar({ className = "" }) {
+export default function Navbar({ className = "", stacked = false }) {
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
   const items = locale === "en" ? NAV_EN : NAV_ES;
   const switchHref = getAlternateLocalePath(pathname);
   const switchLabel = locale === "en" ? "Español" : "English";
 
+  const linkAccent = stacked ?
+      "relative block w-fit py-1 text-[12px] font-semibold uppercase tracking-[0.12em]"
+    : `relative inline-block py-1 text-[11px] font-semibold uppercase tracking-[0.14em] transition after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-sys-yellow after:transition`;
+
+  const inactiveCls = stacked ?
+      "text-zinc-700 transition hover:text-sys-yellow"
+    : "text-zinc-500 after:scale-x-0 hover:text-zinc-900 hover:after:scale-x-100";
+
+  const activeCls =
+    stacked ? "text-sys-yellow" : "text-sys-yellow after:scale-x-100";
+
   return (
     <nav
-      className={`flex flex-wrap items-center justify-end gap-8 lg:gap-10 ${className}`}
+      className={
+        stacked ?
+          `flex w-full flex-col items-stretch gap-10 ${className}`
+        : `flex flex-wrap items-center justify-end gap-8 lg:gap-10 ${className}`
+      }
     >
-      <ul className="flex flex-wrap items-center justify-end gap-x-7 gap-y-3 md:gap-x-8">
+      <ul
+        className={
+          stacked ?
+            "flex flex-col gap-1"
+          : "flex flex-wrap items-center justify-end gap-x-7 gap-y-3 md:gap-x-8"
+        }
+      >
         {items.map(({ href, label }) => {
-          const active = isActivePath(pathname, href);
+          const on = isActivePath(pathname, href);
           return (
-            <li key={href}>
-              <Link
-                href={href}
-                className={`relative text-[11px] font-semibold uppercase tracking-[0.14em] transition after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-sys-yellow after:transition ${
-                  active ?
-                    "text-sys-yellow after:scale-x-100"
-                  : "text-zinc-500 after:scale-x-0 hover:text-zinc-900 hover:after:scale-x-100"
-                }`}
-              >
+            <li key={href} className={stacked ? "w-full" : ""}>
+              <Link href={href} className={`${linkAccent} ${on ? activeCls : inactiveCls}`}>
                 {label}
               </Link>
+              {stacked && on ?
+                <span
+                  className="mt-2 block h-[3px] w-10 rounded-full bg-sys-yellow"
+                  aria-hidden
+                />
+              : null}
             </li>
           );
         })}
-        <li className="flex items-center md:pl-1">
+        <li className={stacked ? "pt-2" : "flex items-center md:pl-1"}>
           <Link
             href={switchHref}
-            className="text-[11px] font-semibold uppercase tracking-[0.14em] text-sys-yellow transition hover:text-sys-yellow-bright"
+            className={`${stacked ? "text-[13px]" : "text-[11px]"} font-semibold uppercase tracking-[0.14em] text-sys-yellow transition hover:text-sys-yellow-bright`}
             hrefLang={locale === "en" ? "es" : "en"}
           >
             {switchLabel}
@@ -68,7 +88,11 @@ export default function Navbar({ className = "" }) {
         href="https://www.facebook.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="group ml-2 inline-flex shrink-0 rounded-lg p-1 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow md:ml-4"
+        className={
+          stacked ?
+            "inline-flex w-fit shrink-0 rounded-lg p-2 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow"
+          : "group ml-2 inline-flex shrink-0 rounded-lg p-1 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow md:ml-4"
+        }
         aria-label="Facebook"
       >
         <FacebookIcon className="h-5 w-5 fill-current" />

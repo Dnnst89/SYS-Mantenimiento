@@ -6,15 +6,11 @@ import { usePathname } from "next/navigation";
 
 import { getHomeHrefForPathname } from "@/lib/locale";
 
-/** Archivo PNG en `public/` (279×169). Sustituir por una versión @2× o SVG para máxima nitidez. */
 const LOGO_SRC = "/logo-sys-mantenimiento.png";
 const NATURAL_W = 279;
 const NATURAL_H = 169;
 
-/**
- * Logo oficial SYS Mantenimiento (asset raster optimizado por `next/image`).
- * @param {{ variant?: "default" | "compact" }} props
- */
+/** @param {{ variant?: "default" | "compact" }} props */
 export default function Logo({ variant = "default" }) {
   const pathname = usePathname();
   const homeHref = getHomeHrefForPathname(pathname);

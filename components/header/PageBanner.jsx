@@ -13,18 +13,12 @@ function HomeIcon({ className }) {
   );
 }
 
-/** Barra de título minimal: fondo claro, acentos amarillos solo en tipografía / detalle fino. */
-export default function PageBanner({
-  title,
-  crumbs,
-  homeLabel = "Inicio",
-  homeHref = "/",
-}) {
+export default function PageBanner({ title, crumbs }) {
   const items =
     crumbs?.length ?
       crumbs
     : [
-        { label: homeLabel, href: homeHref },
+        { label: "Inicio", href: "/" },
         { label: title },
       ];
 

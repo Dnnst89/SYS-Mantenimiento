@@ -45,7 +45,7 @@ export default function Footer() {
       />
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-14 sm:px-6 lg:max-w-[1200px]">
         <div className="flex flex-col gap-10 border-b border-zinc-800 pb-12 sm:flex-row sm:items-start sm:justify-between">
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4 shadow-inner">
+          <div className="p-1">
             <Logo variant="compact" />
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-zinc-400">

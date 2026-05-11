@@ -1,4 +1,4 @@
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import HomeLanding from "@/components/home/HomeLanding";
 
 export const metadata = {
   title: "Inicio | SYS Mantenimiento",
@@ -6,10 +6,10 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <SimpleRoutePage
+    <HomeLanding
       crumbs={[{ label: "Inicio" }]}
-      description="Bienvenido a SYS Mantenimiento. Pronto encontrarás más información en este sitio."
-      title="Inicio"
+      bannerTitle="Inicio"
+      locale="es"
     />
   );
 }

@@ -1,4 +1,4 @@
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import HomeLanding from "@/components/home/HomeLanding";
 
 export const metadata = {
   title: "Proyectos | SYS Mantenimiento",
@@ -6,9 +6,10 @@ export const metadata = {
 
 export default function ProyectosPage() {
   return (
-    <SimpleRoutePage
-      description="Proyectos de mantenimiento y obra. Esta sección se completará próximamente."
-      title="Proyectos"
+    <HomeLanding
+      crumbs={[{ href: "/", label: "Inicio" }, { label: "Proyectos" }]}
+      bannerTitle="Proyectos"
+      locale="es"
     />
   );
 }
