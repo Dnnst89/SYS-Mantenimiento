@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import SectorPage from "@/components/sectors/SectorPage";
 import {
   getSectorBySlugEn,
   sectorStaticSlugEn,
@@ -28,10 +28,14 @@ export default async function SectorPageEn({ params }) {
   if (!sector) notFound();
 
   return (
-    <SimpleRoutePage
-      crumbs={[{ label: "Home", href: "/en" }, { label: sector.titles.en }]}
-      description={sector.descriptions.en}
-      title={sector.titles.en}
+    <SectorPage
+      locale="en"
+      sector={sector}
+      crumbs={[
+        { label: "Home", href: "/en", isHome: true },
+        { label: "Projects", href: "/en" },
+        { label: sector.titles.en },
+      ]}
     />
   );
 }

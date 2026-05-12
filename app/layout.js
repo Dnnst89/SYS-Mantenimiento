@@ -1,4 +1,4 @@
-import { Geist } from "next/font/google";
+import { Geist, Space_Grotesk } from "next/font/google";
 import LocaleHtmlLang from "@/components/LocaleHtmlLang";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
@@ -9,6 +9,12 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display-hero",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata = {
   title: "SYS Mantenimiento",
   description: "Mantenimiento integral en Costa Rica",
@@ -16,7 +22,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${geistSans.variable} h-full antialiased`}>
+    <html
+      lang="es"
+      className={`${geistSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col bg-sys-white text-sys-black">
         <LocaleHtmlLang />
         <Header />
