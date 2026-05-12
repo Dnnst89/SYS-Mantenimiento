@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 function Chevron({ dir, className }) {
   return (
@@ -73,6 +73,152 @@ function RowIcon({ name, className }) {
 }
 
 /**
+ * Galería + detalle de un proyecto. `key={project.id}` en el padre reinicia el índice al cambiar de proyecto.
+ * @param {{
+ *   locale: 'es' | 'en';
+ *   project: {
+ *     id: string;
+ *     kicker: string;
+ *     title: string;
+ *     client: string;
+ *     location: string;
+ *     year: string;
+ *     services: string;
+ *     images: { src: string; alt: string }[];
+ *   };
+ *   detailLabels: { client: string; location: string; year: string; services: string };
+ *   galleryMore: string;
+ * }} props
+ */
+function SectorFeaturedProjectCard({ locale, project, detailLabels, galleryMore }) {
+  const [imgIndex, setImgIndex] = useState(0);
+  const images = project.images;
+  const n = images.length;
+  const safeIndex = Math.min(imgIndex, Math.max(0, n - 1));
+  const main = images[safeIndex];
+
+  const ariaPrev = locale === "en" ? "Previous image" : "Imagen anterior";
+  const ariaNext = locale === "en" ? "Next image" : "Imagen siguiente";
+
+  const prev = () => setImgIndex((i) => (i - 1 + n) % n);
+  const next = () => setImgIndex((i) => (i + 1) % n);
+
+  if (!main) return null;
+
+  return (
+    <article className="mt-8 overflow-hidden rounded-2xl border border-zinc-200/90 bg-white shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] sm:mt-10">
+      <div className="grid gap-0 lg:grid-cols-[1.15fr_1fr]">
+        <div className="relative border-b border-zinc-100 bg-zinc-100 p-3 sm:p-4 lg:border-b-0 lg:border-r">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-200">
+            <Image
+              src={main.src}
+              alt={main.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              priority
+            />
+            {n > 1 ?
+              <>
+                <button
+                  type="button"
+                  onClick={prev}
+                  className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow sm:left-3"
+                  aria-label={ariaPrev}
+                >
+                  <Chevron dir="left" className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={next}
+                  className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow sm:right-3"
+                  aria-label={ariaNext}
+                >
+                  <Chevron dir="right" className="h-5 w-5" />
+                </button>
+              </>
+            : null}
+          </div>
+          {n > 1 ?
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+              {images.map((im, i) => (
+                <button
+                  key={`${project.id}-thumb-${i}`}
+                  type="button"
+                  onClick={() => setImgIndex(i)}
+                  className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-lg ring-2 transition sm:h-16 sm:w-24 ${
+                    i === safeIndex ? "ring-sys-yellow" : "ring-transparent hover:ring-zinc-300"
+                  }`}
+                >
+                  <Image
+                    src={im.src}
+                    alt={im.alt}
+                    fill
+                    className="object-cover"
+                    sizes="96px"
+                  />
+                </button>
+              ))}
+            </div>
+          : null}
+        </div>
+
+        <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-sys-yellow">
+            {project.kicker}
+          </p>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl">
+            {project.title}
+          </h2>
+          <dl className="mt-6 space-y-5 text-sm sm:text-[15px]">
+            <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
+              <dt className="flex items-start gap-2 text-zinc-500">
+                <RowIcon name="user" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
+                <span>{detailLabels.client}</span>
+              </dt>
+              <dd className="font-medium text-zinc-900 sm:pt-0">{project.client}</dd>
+            </div>
+            <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
+              <dt className="flex items-start gap-2 text-zinc-500">
+                <RowIcon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
+                <span>{detailLabels.location}</span>
+              </dt>
+              <dd className="font-medium text-zinc-900">{project.location}</dd>
+            </div>
+            <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
+              <dt className="flex items-start gap-2 text-zinc-500">
+                <RowIcon name="calendar" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
+                <span>{detailLabels.year}</span>
+              </dt>
+              <dd className="font-medium text-zinc-900">{project.year}</dd>
+            </div>
+            <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
+              <dt className="flex items-start gap-2 text-zinc-500">
+                <RowIcon name="briefcase" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
+                <span className="leading-snug">{detailLabels.services}</span>
+              </dt>
+              <dd className="font-medium leading-relaxed text-zinc-900">{project.services}</dd>
+            </div>
+          </dl>
+          {n > 1 ?
+            <button
+              type="button"
+              onClick={next}
+              className="mt-8 inline-flex w-fit items-center gap-1 text-sm font-bold text-sys-yellow transition hover:text-sys-yellow-bright"
+            >
+              {galleryMore}
+              <span aria-hidden className="inline-block translate-y-px">
+                →
+              </span>
+            </button>
+          : null}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/**
  * @param {{
  *   locale: 'es' | 'en';
  *   showcase: {
@@ -98,10 +244,6 @@ function RowIcon({ name, className }) {
 export default function SectorProjectsShowcase({ locale, showcase }) {
   const [filterId, setFilterId] = useState("todos");
   const [sortId, setSortId] = useState(showcase.sortOptions[0]?.id ?? "recent");
-  const [imgIndex, setImgIndex] = useState(0);
-
-  const ariaPrev = locale === "en" ? "Previous image" : "Imagen anterior";
-  const ariaNext = locale === "en" ? "Next image" : "Imagen siguiente";
 
   const project = useMemo(() => {
     const list = showcase.projects;
@@ -110,19 +252,7 @@ export default function SectorProjectsShowcase({ locale, showcase }) {
     return hit ?? list[0] ?? null;
   }, [filterId, showcase.projects]);
 
-  useEffect(() => {
-    setImgIndex(0);
-  }, [project?.id]);
-
-  const images = project?.images ?? [];
-  const safeIndex = Math.min(imgIndex, Math.max(0, images.length - 1));
-  const main = images[safeIndex];
-
-  if (!project || !main) return null;
-
-  const n = images.length;
-  const prev = () => setImgIndex((i) => (i - 1 + n) % n);
-  const next = () => setImgIndex((i) => (i + 1) % n);
+  if (!project?.images?.length) return null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:max-w-[1200px]">
@@ -134,10 +264,7 @@ export default function SectorProjectsShowcase({ locale, showcase }) {
               <button
                 key={f.id}
                 type="button"
-                onClick={() => {
-                  setFilterId(f.id);
-                  setImgIndex(0);
-                }}
+                onClick={() => setFilterId(f.id)}
                 className={
                   active ?
                     "rounded-full bg-sys-yellow px-4 py-2 text-xs font-bold uppercase tracking-wide text-zinc-950 shadow-sm sm:text-[13px]"
@@ -168,115 +295,13 @@ export default function SectorProjectsShowcase({ locale, showcase }) {
         </div>
       </div>
 
-      <article className="mt-8 overflow-hidden rounded-2xl border border-zinc-200/90 bg-white shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] sm:mt-10">
-        <div className="grid gap-0 lg:grid-cols-[1.15fr_1fr]">
-          <div className="relative border-b border-zinc-100 bg-zinc-100 p-3 sm:p-4 lg:border-b-0 lg:border-r">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-200">
-              <Image
-                src={main.src}
-                alt={main.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                priority
-              />
-              {n > 1 ?
-                <>
-                  <button
-                    type="button"
-                    onClick={prev}
-                    className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow sm:left-3"
-                    aria-label={ariaPrev}
-                  >
-                    <Chevron dir="left" className="h-5 w-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={next}
-                    className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow sm:right-3"
-                    aria-label={ariaNext}
-                  >
-                    <Chevron dir="right" className="h-5 w-5" />
-                  </button>
-                </>
-              : null}
-            </div>
-            {n > 1 ?
-              <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-                {images.map((im, i) => (
-                  <button
-                    key={`${project.id}-thumb-${i}`}
-                    type="button"
-                    onClick={() => setImgIndex(i)}
-                    className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-lg ring-2 transition sm:h-16 sm:w-24 ${
-                      i === safeIndex ? "ring-sys-yellow" : "ring-transparent hover:ring-zinc-300"
-                    }`}
-                  >
-                    <Image
-                      src={im.src}
-                      alt={im.alt}
-                      fill
-                      className="object-cover"
-                      sizes="96px"
-                    />
-                  </button>
-                ))}
-              </div>
-            : null}
-          </div>
-
-          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-sys-yellow">
-              {project.kicker}
-            </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl">
-              {project.title}
-            </h2>
-            <dl className="mt-6 space-y-5 text-sm sm:text-[15px]">
-              <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
-                <dt className="flex items-start gap-2 text-zinc-500">
-                  <RowIcon name="user" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
-                  <span>{showcase.detailLabels.client}</span>
-                </dt>
-                <dd className="font-medium text-zinc-900 sm:pt-0">{project.client}</dd>
-              </div>
-              <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
-                <dt className="flex items-start gap-2 text-zinc-500">
-                  <RowIcon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
-                  <span>{showcase.detailLabels.location}</span>
-                </dt>
-                <dd className="font-medium text-zinc-900">{project.location}</dd>
-              </div>
-              <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
-                <dt className="flex items-start gap-2 text-zinc-500">
-                  <RowIcon name="calendar" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
-                  <span>{showcase.detailLabels.year}</span>
-                </dt>
-                <dd className="font-medium text-zinc-900">{project.year}</dd>
-              </div>
-              <div className="grid grid-cols-1 gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-x-4">
-                <dt className="flex items-start gap-2 text-zinc-500">
-                  <RowIcon name="briefcase" className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400" />
-                  <span className="leading-snug">{showcase.detailLabels.services}</span>
-                </dt>
-                <dd className="font-medium leading-relaxed text-zinc-900">{project.services}</dd>
-              </div>
-            </dl>
-            {n > 1 ?
-              <button
-                type="button"
-                onClick={next}
-                className="mt-8 inline-flex w-fit items-center gap-1 text-sm font-bold text-sys-yellow transition hover:text-sys-yellow-bright"
-              >
-                {showcase.galleryMore}
-                <span aria-hidden className="inline-block translate-y-px">
-                  →
-                </span>
-              </button>
-            : null}
-          </div>
-        </div>
-      </article>
+      <SectorFeaturedProjectCard
+        key={project.id}
+        locale={locale}
+        project={project}
+        detailLabels={showcase.detailLabels}
+        galleryMore={showcase.galleryMore}
+      />
     </div>
   );
 }
