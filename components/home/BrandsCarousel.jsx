@@ -1,21 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { homeBrandItems } from "@/lib/homeBrands";
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+
 function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  return reduced;
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      const mq = window.matchMedia(reducedMotionQuery);
+      mq.addEventListener("change", onStoreChange);
+      return () => mq.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia(reducedMotionQuery).matches,
+    () => false,
+  );
 }
 
 /** @param {{ src: string; alt: string }} props */
