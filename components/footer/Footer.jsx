@@ -1,4 +1,5 @@
 import Logo from "@/components/header/Logo";
+import { COMPANY_EMAIL } from "@/lib/companyEmail";
 
 function IconHouse() {
   return (
@@ -94,10 +95,10 @@ export default function Footer() {
             <IconEnvelope />
             <span className="pt-0.5 text-zinc-400">
               <a
-                href="mailto:contacto@sysmantenimiento.com"
+                href={`mailto:${COMPANY_EMAIL}`}
                 className="font-medium text-sys-yellow underline decoration-sys-yellow/30 underline-offset-4 transition hover:decoration-sys-yellow"
               >
-                contacto@sysmantenimiento.com
+                {COMPANY_EMAIL}
               </a>
             </span>
           </p>

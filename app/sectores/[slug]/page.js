@@ -5,6 +5,7 @@ import {
   getSectorBySlugEs,
   sectorStaticSlugEs,
 } from "@/lib/sectors";
+import { getSectorPageDetail } from "@/lib/sectorPageDetail";
 
 export function generateStaticParams() {
   return sectorStaticSlugEs();
@@ -15,9 +16,10 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const sector = getSectorBySlugEs(slug);
   if (!sector) return {};
+  const detail = getSectorPageDetail("es", sector);
   return {
     title: `${sector.titles.es} | SYS Mantenimiento`,
-    description: sector.descriptions.es,
+    description: detail?.metaDescription ?? sector.descriptions.es,
   };
 }
 

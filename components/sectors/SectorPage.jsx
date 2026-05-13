@@ -1,21 +1,25 @@
 import SectorCategoryHero from "@/components/sectors/SectorCategoryHero";
 import SectorPageBottomCta from "@/components/sectors/SectorPageBottomCta";
-import SectorProjectsShowcase from "@/components/sectors/SectorProjectsShowcase";
-import {
-  getSectorCategoryShowcase,
-  getSectorPageBottomCta,
-} from "@/lib/sectorCategoryShowcase";
+import SectorPageExperience from "@/components/sectors/SectorPageExperience";
+import SectorWorkCatalog from "@/components/sectors/SectorWorkCatalog";
+import { getSectorPageBottomCta } from "@/lib/sectorCategoryShowcase";
+import { getSectorPageDetail } from "@/lib/sectorPageDetail";
 
 /** @param {{ locale: 'es' | 'en'; sector: object; crumbs: { label: string; href?: string; isHome?: boolean }[] }} props */
 export default function SectorPage({ locale, sector, crumbs }) {
-  const showcase = getSectorCategoryShowcase(locale, sector);
   const bottom = getSectorPageBottomCta(locale);
+  const detail = getSectorPageDetail(locale, sector);
 
   return (
-    <div className="flex flex-1 flex-col bg-zinc-100">
+    <div className="flex flex-1 flex-col bg-zinc-50">
       <SectorCategoryHero locale={locale} sector={sector} crumbs={crumbs} />
-      <main className="flex-1 pt-8 sm:pt-10">
-        <SectorProjectsShowcase locale={locale} showcase={showcase} />
+      <SectorPageExperience detail={detail} />
+      <main className="flex-1">
+        <SectorWorkCatalog
+          title={detail.catalogTitle}
+          subtitle={detail.catalogSubtitle}
+          items={detail.catalog}
+        />
         <SectorPageBottomCta
           title={bottom.title}
           subtitle={bottom.subtitle}
