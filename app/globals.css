@@ -45,6 +45,10 @@ body {
   animation: home-marquee 42s linear infinite;
 }
 
+.home-marquee-track--brands {
+  animation-duration: 52s;
+}
+
 .home-marquee-strip:hover .home-marquee-track {
   animation-play-state: paused;
 }
