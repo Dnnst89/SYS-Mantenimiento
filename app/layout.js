@@ -2,6 +2,8 @@ import { Geist, Space_Grotesk } from "next/font/google";
 import LocaleHtmlLang from "@/components/LocaleHtmlLang";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import ToastifyHost from "@/components/ToastifyHost";
+import WhatsappFloat from "@/components/WhatsappFloat";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,6 +33,8 @@ export default function RootLayout({ children }) {
         <Header />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />
+        <ToastifyHost />
+        <WhatsappFloat />
       </body>
     </html>
   );

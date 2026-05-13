@@ -1,14 +1,11 @@
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import ContactPageEs from "@/components/contact/ContactPageEs";
 
 export const metadata = {
   title: "Contacto | SYS Mantenimiento",
+  description:
+    "Contactá a SYS Mantenimiento en Costa Rica: Oficentro Palacio, teléfono, correo y formulario para iniciar tu consulta de mantenimiento.",
 };
 
 export default function ContactoPage() {
-  return (
-    <SimpleRoutePage
-      description="Escríbenos o llámanos. Los datos de contacto también están en el pie de página."
-      title="Contacto"
-    />
-  );
+  return <ContactPageEs />;
 }
