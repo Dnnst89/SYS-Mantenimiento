@@ -62,15 +62,24 @@ function resolveHeroImageSrc() {
 
 const HERO_IMAGE = resolveHeroImageSrc();
 
-/** @param {{ locale: 'es' | 'en' }} props */
-export default function HomeHero({ locale }) {
-  const t = COPY[locale];
+/**
+ * @param {{
+ *   locale: 'es' | 'en';
+ *   copy?: typeof COPY.es;
+ *   headingId?: string;
+ *   priority?: boolean;
+ * }} props
+ * `priority` defaults to true only on the home hero (when `copy` is omitted) for LCP.
+ */
+export default function HomeHero({ locale, copy, headingId = "home-hero-heading", priority }) {
+  const t = copy ?? COPY[locale];
   const wa = whatsappHref(locale);
+  const imagePriority = priority ?? copy == null;
 
   return (
     <section
       className="relative flex min-h-[min(68dvh,520px)] w-full overflow-hidden bg-sys-black sm:min-h-[min(70dvh,540px)] lg:min-h-[min(58dvh,440px)] xl:min-h-[min(60dvh,460px)]"
-      aria-labelledby="home-hero-heading"
+      aria-labelledby={headingId}
     >
       {/* Capa de imagen: cover + prioridad a la izquierda (la actividad queda en ese lado del encuadre) */}
       <div className="absolute inset-0 z-0" aria-hidden>
@@ -78,7 +87,7 @@ export default function HomeHero({ locale }) {
           src={HERO_IMAGE}
           alt=""
           fill
-          priority
+          priority={imagePriority}
           sizes="100vw"
           className="object-cover object-[12%_48%] sm:object-[16%_46%] lg:object-[20%_44%] xl:object-[22%_42%]"
         />
@@ -100,7 +109,7 @@ export default function HomeHero({ locale }) {
             aria-hidden
           />
           <h1
-            id="home-hero-heading"
+            id={headingId}
             className="w-full text-[clamp(1.875rem,5.2vw,3.125rem)] font-semibold leading-[1.06] tracking-[-0.035em] sm:text-[clamp(2rem,4.8vw,3.25rem)]"
           >
             <span className="block text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
