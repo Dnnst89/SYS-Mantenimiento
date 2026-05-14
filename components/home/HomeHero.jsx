@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { whatsappHref } from "@/lib/whatsappContact";
 
+import HeroBreadcrumbs from "@/components/home/HeroBreadcrumbs";
+import { getQuoteWizardHref } from "@/lib/quoteWizardContent";
+import { whatsappHref } from "@/lib/whatsappContact";
 function ArrowRightIcon({ className }) {
   return (
     <svg
@@ -34,7 +36,7 @@ const COPY = {
     body: "Ofrecemos servicios integrales de mantenimiento con estándares de calidad, seguridad y eficiencia que superan las expectativas.",
     ctaPrimary: "Solicitar cotización",
     ctaWhatsapp: "Hablar por WhatsApp",
-    contactHref: "/contacto",
+    contactHref: getQuoteWizardHref("es"),
   },
   en: {
     line1: "Solutions that keep your world",
@@ -42,7 +44,7 @@ const COPY = {
     body: "We deliver comprehensive maintenance with quality, safety, and efficiency standards that exceed expectations.",
     ctaPrimary: "Request a quote",
     ctaWhatsapp: "Chat on WhatsApp",
-    contactHref: "/en/contact",
+    contactHref: getQuoteWizardHref("en"),
   },
 };
 
@@ -96,14 +98,16 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
         <div className="absolute inset-0 bg-gradient-to-t from-sys-black/45 via-transparent to-sys-black/20 lg:from-sys-black/35 lg:to-sys-black/10" />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-9 sm:px-6 sm:py-10 lg:max-w-[1200px] lg:px-6 lg:py-12">
-        <div
-          className="w-full max-w-[min(100%,520px)]"
-          style={{
-            fontFamily:
-              "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
-          }}
-        >
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-9 sm:px-6 sm:py-10 lg:max-w-[1200px] lg:px-6 lg:py-12">
+        <HeroBreadcrumbs />
+        <div className="flex min-h-0 flex-1 flex-col justify-center">
+          <div
+            className="w-full max-w-[min(100%,520px)]"
+            style={{
+              fontFamily:
+                "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
+            }}
+          >
           <div
             className="mb-6 h-1 w-12 shrink-0 rounded-full bg-gradient-to-r from-sys-yellow to-sys-yellow-bright shadow-[0_0_20px_rgba(232,214,0,0.35)] sm:mb-7 sm:w-14"
             aria-hidden
@@ -140,6 +144,7 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
               <WhatsappIcon className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
             </a>
           </div>
+        </div>
         </div>
       </div>
     </section>

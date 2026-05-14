@@ -3,18 +3,14 @@ import Link from "next/link";
 import { ContactCard, IconMail, IconPhone, IconPin } from "@/components/contact/ContactBlocks";
 import ContactEmailRow from "@/components/contact/ContactEmailRow";
 import ContactFormEn from "@/components/contact/ContactFormEn";
+import HomeHero from "@/components/home/HomeHero";
 import PageBanner from "@/components/header/PageBanner";
 
 export default function ContactPageEn() {
   return (
     <div className="flex flex-1 flex-col">
-      <PageBanner
-        title="Contact"
-        crumbs={[
-          { href: "/en", label: "Home" },
-          { label: "Contact" },
-        ]}
-      />
+      <HomeHero locale="en" headingId="contact-hero-heading" priority={false} />
+      <PageBanner showBreadcrumb={false} title="Contact" />
       <main className="relative flex-1 overflow-hidden bg-gradient-to-b from-zinc-100 via-zinc-50/90 to-white">
         <div
           className="pointer-events-none absolute -right-24 top-0 h-[420px] w-[420px] rounded-full bg-sys-yellow/12 blur-3xl"

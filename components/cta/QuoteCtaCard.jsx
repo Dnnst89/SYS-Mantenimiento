@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { getQuoteWizardHref } from "@/lib/quoteWizardContent";
 import { quoteCtaCopy } from "@/lib/servicesPageContent";
 
 function PhoneBadgeIcon({ className }) {
@@ -56,7 +57,7 @@ const GRADIENT_MOBILE =
  */
 export default function QuoteCtaCard({ locale }) {
   const t = quoteCtaCopy[locale];
-  const href = locale === "en" ? "/en/contact" : "/contacto";
+  const href = getQuoteWizardHref(locale);
 
   return (
     <aside

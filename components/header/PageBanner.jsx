@@ -21,7 +21,9 @@ function HomeIcon({ className }) {
  *   homeHref?: string;
  *   breadcrumbCurrentLabel?: string;
  *   breadcrumbOnDark?: boolean;
+ *   showBreadcrumb?: boolean;
  * }} props
+ * `showBreadcrumb`: si es false, no se muestran migas (las migas van en `HomeHero` vía `HeroBreadcrumbs`).
  * breadcrumbOnDark: casita amarilla sobre fondo oscuro; por defecto (false) casita negra sobre fondo claro.
  */
 export default function PageBanner({
@@ -31,6 +33,7 @@ export default function PageBanner({
   homeHref = "/",
   breadcrumbCurrentLabel = "Inicio",
   breadcrumbOnDark = false,
+  showBreadcrumb = true,
 }) {
   const items =
     crumbs?.length ?
@@ -47,7 +50,7 @@ export default function PageBanner({
   return (
     <div className="border-b border-zinc-100 bg-gradient-to-b from-white to-zinc-50/80">
       <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-7 lg:max-w-[1200px]">
-        {breadcrumbIconOnly ?
+        {showBreadcrumb && breadcrumbIconOnly ?
           <nav
             aria-label="Migas de pan"
             className="mb-6 flex w-full justify-start sm:mb-8"
@@ -84,7 +87,7 @@ export default function PageBanner({
             <div className="mt-4 h-px w-14 bg-sys-yellow" aria-hidden />
           </div>
 
-          {!breadcrumbIconOnly ?
+          {!showBreadcrumb ? null : !breadcrumbIconOnly ?
             <nav
               aria-label="Migas de pan"
               className="flex shrink-0 items-center gap-2 text-[13px] text-zinc-500"
