@@ -1,18 +1,11 @@
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import AboutPageView from "@/components/about/AboutPageView";
 
 export const metadata = {
   title: "About | SYS Mantenimiento",
+  description:
+    "Team, mission, vision, and values of SYS Mantenimiento — comprehensive maintenance in Costa Rica.",
 };
 
 export default function EnglishAboutPage() {
-  return (
-    <SimpleRoutePage
-      crumbs={[
-        { href: "/en", label: "Home" },
-        { label: "About" },
-      ]}
-      description="Learn about SYS Mantenimiento. Story and team information coming soon."
-      title="About"
-    />
-  );
+  return <AboutPageView locale="en" />;
 }

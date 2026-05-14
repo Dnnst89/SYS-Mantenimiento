@@ -2,23 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import { getLocaleFromPathname } from "@/lib/locale";
-
-const WHATSAPP_PHONE = "50660903460";
-
-const PREFILL_MESSAGE = {
-  es: "Hola, me gustaría obtener más información sobre los servicios de SYS Mantenimiento.",
-  en: "Hello, I'd like more information about SYS Mantenimiento services.",
-};
+import { whatsappHref } from "@/lib/whatsappContact";
 
 const ARIA_LABEL = {
   es: "Escribir por WhatsApp al +506 6090 3460",
   en: "Message SYS Mantenimiento on WhatsApp at +506 6090 3460",
 };
-
-function whatsappHref(locale) {
-  const params = new URLSearchParams({ text: PREFILL_MESSAGE[locale] });
-  return `https://wa.me/${WHATSAPP_PHONE}?${params.toString()}`;
-}
 
 function WhatsappIcon({ className }) {
   return (
