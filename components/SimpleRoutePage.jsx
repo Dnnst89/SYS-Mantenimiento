@@ -1,9 +1,9 @@
 import PageBanner from "@/components/header/PageBanner";
 
-export default function SimpleRoutePage({ title, description, crumbs }) {
+export default function SimpleRoutePage({ title, description, crumbs, showBreadcrumb = false }) {
   return (
     <div className="flex flex-1 flex-col">
-      <PageBanner crumbs={crumbs} title={title} />
+      <PageBanner crumbs={crumbs} showBreadcrumb={showBreadcrumb} title={title} />
       <main className="flex-1 bg-surface-muted">
         <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:max-w-[1200px]">
           <article className="rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm sm:p-10">

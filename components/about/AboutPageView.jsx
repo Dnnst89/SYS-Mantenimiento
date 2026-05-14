@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import BrandsCarousel from "@/components/home/BrandsCarousel";
 import HomeHero from "@/components/home/HomeHero";
-import { aboutHeroCopy, aboutPageCopy } from "@/lib/aboutPageContent";
+import { aboutPageCopy } from "@/lib/aboutPageContent";
 
 function ArrowRight({ className }) {
   return (
@@ -116,11 +117,11 @@ const VALUE_ICONS = [IconValueSafety, IconValueTransparency, IconValueExcellence
 /** @param {{ locale: 'es' | 'en' }} props */
 export default function AboutPageView({ locale }) {
   const t = aboutPageCopy[locale];
-  const hero = aboutHeroCopy[locale];
 
   return (
     <div className="flex flex-1 flex-col">
-      <HomeHero locale={locale} copy={hero} headingId="about-hero-heading" />
+      <HomeHero locale={locale} headingId="about-hero-heading" priority={false} />
+      <BrandsCarousel locale={locale} />
 
       <section
         className="relative overflow-hidden border-b border-zinc-200/80 py-16 sm:py-20 lg:py-24"
