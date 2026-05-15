@@ -4,6 +4,7 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import ToastifyHost from "@/components/ToastifyHost";
 import WhatsappFloat from "@/components/WhatsappFloat";
+import { siteUrl } from "@/lib/siteUrl";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,6 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
+  metadataBase: new URL(`${siteUrl()}/`),
   title: "SYS Mantenimiento",
   description: "Mantenimiento integral en Costa Rica",
 };
