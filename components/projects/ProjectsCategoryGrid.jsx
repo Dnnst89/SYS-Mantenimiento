@@ -1,115 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { StrokeIcon } from "@/components/icons/StrokeIcon";
 import { getProjectsCategoryCards } from "@/lib/projectsCategories";
-
-function ArrowRightSmall({ className }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="M5 12h12M13 7l6 5-6 5" />
-    </svg>
-  );
-}
-
-function IconHome({ className }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden>
-      <path
-        d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconOffice({ className }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden>
-      <path
-        d="M6 22V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v18"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-      <path
-        d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h4"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 22h16"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconFactory({ className }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden>
-      <path
-        d="M4 22V10l4 3V10l4 3V8l8-4v18H4Z"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 22v-4h3v4M14 22v-6h3v6"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-      <path
-        d="M17 6V3h2v3"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconColumns({ className }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="none" aria-hidden>
-      <path
-        d="M8 22V6l4-3 4 3v16M4 22h16"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 22V10M14 22V10"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-const icons = {
-  home: IconHome,
-  office: IconOffice,
-  factory: IconFactory,
-  columns: IconColumns,
-};
 
 /** @param {{ locale: 'es' | 'en' }} props */
 export default function ProjectsCategoryGrid({ locale }) {
@@ -138,10 +31,8 @@ export default function ProjectsCategoryGrid({ locale }) {
         </header>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-5">
-          {cards.map((card, index) => {
-            const Icon = icons[card.icon] ?? IconHome;
-            return (
-              <Link
+          {cards.map((card, index) => (
+            <Link
                 key={card.href}
                 href={card.href}
                 className="group relative isolate aspect-[3/5] w-full overflow-hidden rounded-[10px] shadow-md ring-1 ring-zinc-200/80 transition hover:-translate-y-0.5 hover:shadow-lg hover:ring-sys-yellow/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow lg:aspect-[10/17]"
@@ -166,7 +57,10 @@ export default function ProjectsCategoryGrid({ locale }) {
                   className="absolute left-3.5 top-3.5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/65 shadow-md ring-2 ring-sys-yellow backdrop-blur-[2px] sm:left-4 sm:top-4 sm:h-12 sm:w-12"
                   aria-hidden
                 >
-                  <Icon className="h-[22px] w-[22px] text-sys-yellow sm:h-6 sm:w-6" />
+                  <StrokeIcon
+                    name={card.icon}
+                    className="h-[22px] w-[22px] text-sys-yellow sm:h-6 sm:w-6"
+                  />
                 </div>
 
                 {/* Copy + outline arrow on the image (bottom) */}
@@ -185,14 +79,16 @@ export default function ProjectsCategoryGrid({ locale }) {
                         className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-sys-yellow bg-black/25 text-sys-yellow backdrop-blur-[1px] transition group-hover:border-sys-yellow-bright group-hover:text-sys-yellow-bright"
                         aria-hidden
                       >
-                        <ArrowRightSmall className="h-4 w-4" />
+                        <StrokeIcon
+                          name="arrowRightSmall"
+                          className="h-4 w-4"
+                        />
                       </span>
                     </div>
                   </div>
                 </div>
-              </Link>
-            );
-          })}
+            </Link>
+          ))}
         </div>
       </div>
     </section>

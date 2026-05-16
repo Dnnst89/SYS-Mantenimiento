@@ -3,16 +3,23 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 
+import { StrokeIcon } from "@/components/icons/StrokeIcon";
 import { servicesFaqCopy } from "@/lib/servicesPageContent";
 
-function PlusIcon({ className, open }) {
+/** @param {{ open: boolean }} props */
+function FaqToggleIcon({ open }) {
   return (
-    <span className={`relative block h-5 w-5 shrink-0 ${className}`} aria-hidden>
-      <span
-        className={`absolute left-1/2 top-1/2 block h-0.5 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-900 transition-transform duration-200 ${open ? "rotate-45" : ""}`}
-      />
-      <span
-        className={`absolute left-1/2 top-1/2 block h-3 w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-900 transition-transform duration-200 ${open ? "rotate-45" : ""}`}
+    <span
+      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 transition-[background-color,border-color,color,transform] duration-200 ${
+        open ?
+          "border-sys-yellow bg-zinc-900 text-sys-yellow"
+        : "border-zinc-900 bg-sys-yellow text-zinc-900"
+      }`}
+      aria-hidden
+    >
+      <StrokeIcon
+        name="chevronDown"
+        className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
       />
     </span>
   );
@@ -56,7 +63,7 @@ export default function ServicesFaqAccordion({ locale }) {
                   <span className="text-[15px] font-medium leading-snug text-zinc-900 sm:text-base">
                     {item.q}
                   </span>
-                  <PlusIcon open={open} />
+                  <FaqToggleIcon open={open} />
                 </button>
                 <div
                   id={panelId}
