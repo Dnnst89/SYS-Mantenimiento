@@ -1,22 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useSyncExternalStore } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
+import { useEffect, useState } from "react";
 import { homeBrandItems } from "@/lib/homeBrands";
-
-const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
-
-function usePrefersReducedMotion() {
-  return useSyncExternalStore(
-    (onStoreChange) => {
-      const mq = window.matchMedia(reducedMotionQuery);
-      mq.addEventListener("change", onStoreChange);
-      return () => mq.removeEventListener("change", onStoreChange);
-    },
-    () => window.matchMedia(reducedMotionQuery).matches,
-    () => false,
-  );
-}
 
 /** @param {{ src: string; alt: string }} props */
 function BrandLogo({ src, alt }) {
@@ -34,8 +22,46 @@ function BrandLogo({ src, alt }) {
 }
 
 /** @param {{ locale: 'es' | 'en' }} props */
+function BrandsCarouselTrack({ locale }) {
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: "start", dragFree: true },
+    [
+      AutoScroll({
+        speed: 1,
+        stopOnMouseEnter: true,
+        stopOnInteraction: false,
+      }),
+    ],
+  );
+
+  return (
+    <div
+      className="-mx-4 overflow-hidden px-4 sm:-mx-6 sm:px-6"
+      ref={emblaRef}
+    >
+      <ul className="m-0 flex touch-pan-y gap-x-10 p-0 sm:gap-x-14">
+        {homeBrandItems.map((b) => (
+          <li key={b.src} className="min-w-0 shrink-0 grow-0 basis-auto">
+            <BrandLogo src={b.src} alt={b.alt[locale]} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** @param {{ locale: 'es' | 'en' }} props */
 export default function BrandsCarousel({ locale }) {
-  const reducedMotion = usePrefersReducedMotion();
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   const sectionLabel =
     locale === "en" ? "Brand logos" : "Logos de marcas";
 
@@ -53,35 +79,7 @@ export default function BrandsCarousel({ locale }) {
               </li>
             ))}
           </ul>
-        : <>
-            <ul className="sr-only">
-              {homeBrandItems.map((b) => (
-                <li key={b.src}>{b.alt[locale]}</li>
-              ))}
-            </ul>
-            <div
-              className="home-marquee-strip relative -mx-4 overflow-hidden px-4 sm:-mx-6 sm:px-6"
-              aria-hidden
-            >
-              <div className="home-marquee-track home-marquee-track--brands items-center gap-x-10 sm:gap-x-14">
-                {homeBrandItems.map((b) => (
-                  <BrandLogo
-                    key={`a-${b.src}`}
-                    src={b.src}
-                    alt={b.alt[locale]}
-                  />
-                ))}
-                {homeBrandItems.map((b) => (
-                  <BrandLogo
-                    key={`b-${b.src}`}
-                    src={b.src}
-                    alt={b.alt[locale]}
-                  />
-                ))}
-              </div>
-            </div>
-          </>
-        }
+        : <BrandsCarouselTrack locale={locale} />}
       </div>
     </section>
   );
