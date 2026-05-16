@@ -3,8 +3,22 @@
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { homeBrandItems } from "@/lib/homeBrands";
+
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+
+function usePrefersReducedMotion() {
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      const mq = window.matchMedia(reducedMotionQuery);
+      mq.addEventListener("change", onStoreChange);
+      return () => mq.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia(reducedMotionQuery).matches,
+    () => false,
+  );
+}
 
 /** @param {{ src: string; alt: string }} props */
 function BrandLogo({ src, alt }) {
@@ -52,15 +66,7 @@ function BrandsCarouselTrack({ locale }) {
 
 /** @param {{ locale: 'es' | 'en' }} props */
 export default function BrandsCarousel({ locale }) {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const onChange = () => setReducedMotion(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  const reducedMotion = usePrefersReducedMotion();
 
   const sectionLabel =
     locale === "en" ? "Brand logos" : "Logos de marcas";
