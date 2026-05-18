@@ -21,17 +21,19 @@ function usePrefersReducedMotion() {
 }
 
 /** @param {{ src: string; alt: string }} props */
+const brandSlideClass =
+  "box-border flex w-[10.5rem] shrink-0 items-center justify-center px-5 sm:w-48 sm:px-6";
+
 function BrandLogo({ src, alt }) {
   return (
-    <div className="relative h-12 w-[min(10.5rem,42vw)] shrink-0 sm:h-[3.25rem] sm:w-[min(12rem,36vw)]">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-contain object-center"
-        sizes="(max-width: 640px) 42vw, 192px"
-      />
-    </div>
+    <Image
+      src={src}
+      alt={alt}
+      width={160}
+      height={52}
+      className="h-12 w-auto max-w-full object-contain object-center sm:h-[3.25rem]"
+      sizes="160px"
+    />
   );
 }
 
@@ -53,9 +55,9 @@ function BrandsCarouselTrack({ locale }) {
       className="-mx-4 overflow-hidden px-4 sm:-mx-6 sm:px-6"
       ref={emblaRef}
     >
-      <ul className="m-0 flex touch-pan-y gap-x-10 p-0 sm:gap-x-14">
+      <ul className="m-0 flex list-none touch-pan-y p-0">
         {homeBrandItems.map((b) => (
-          <li key={b.src} className="min-w-0 shrink-0 grow-0 basis-auto">
+          <li key={b.src} className={brandSlideClass}>
             <BrandLogo src={b.src} alt={b.alt[locale]} />
           </li>
         ))}
@@ -78,9 +80,9 @@ export default function BrandsCarousel({ locale }) {
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:max-w-[1200px]">
         {reducedMotion ?
-          <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-x-10 gap-y-6 p-0 sm:gap-x-12">
+          <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-y-6 p-0">
             {homeBrandItems.map((b) => (
-              <li key={b.src}>
+              <li key={b.src} className={brandSlideClass}>
                 <BrandLogo src={b.src} alt={b.alt[locale]} />
               </li>
             ))}
