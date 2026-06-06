@@ -31,8 +31,8 @@ function WhatsappIcon({ className }) {
 
 const COPY = {
   es: {
-    line1: "Soluciones que mantienen tu mundo",
-    line2: "funcionando.",
+    line1: "Experiencia técnica que marca ", /**linea de h1 actualizada */
+    line2: "diferencia.",
     body: "Ofrecemos servicios integrales de mantenimiento con estándares de calidad, seguridad y eficiencia que superan las expectativas.",
     ctaPrimary: "Solicitar cotización",
     ctaWhatsapp: "Hablar por WhatsApp",
