@@ -148,18 +148,24 @@ export default function QuoteWizard({ locale }) {
     const done = isReview || i < step;
     const current = !isReview && i === step;
     if (done) {
-      return "border-sys-yellow bg-sys-yellow text-zinc-950 shadow-[0_0_0_1px_rgba(0,0,0,0.06)]";
+      /*return "border-sys-yellow bg-sys-yellow text-zinc-950 shadow-[0_0_0_1px_rgba(0,0,0,0.06)]";*/
+      return "relative z-10 border-sys-yellow bg-sys-yellow text-zinc-950 shadow-[0_0_0_1px_rgba(0,0,0,0.06)]";
+
     }
     if (current) {
-      return "border-sys-yellow bg-zinc-950 text-sys-yellow shadow-[0_0_0_4px_rgba(232,214,0,0.22)]";
+      /*return "border-sys-yellow bg-zinc-950 text-sys-yellow shadow-[0_0_0_4px_rgba(232,214,0,0.22)]";*/
+      return "relative z-10 border-sys-yellow bg-zinc-950 text-sys-yellow shadow-[0_0_0_4px_rgba(232,214,0,0.22)]";
+
     }
-    return "border-zinc-300 bg-white text-zinc-400";
+    /*return "border-zinc-300 bg-white text-zinc-400";*/
+    return "relative z-10 border-zinc-700 bg-zinc-950 text-zinc-500";
+
   }
 
   function stepTitleClass(i) {
     const done = isReview || i < step;
     const current = !isReview && i === step;
-    if (current) return "text-zinc-950 font-semibold";
+    if (current) return "text-sys-yellow font-semibold";
     if (done) return "text-zinc-500";
     return "text-zinc-400";
   }
