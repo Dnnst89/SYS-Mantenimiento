@@ -50,7 +50,7 @@ const COPY = {
 
 /** Formato más ancho tipo banner; misma foto que categorías (ingeniería / actividad en planta). */
 const HERO_IMAGE_REMOTE =
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=2400&h=960&q=85&auto=format&fit=crop";
+"/hero_image/imagen_de_portada.jpeg"; 
 
 function resolveHeroImageSrc() {
   const raw =
