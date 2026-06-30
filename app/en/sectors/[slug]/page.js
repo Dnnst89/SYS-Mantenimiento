@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation";
 
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import SectorPage from "@/components/sectors/SectorPage";
 import {
   getSectorBySlugEn,
   sectorStaticSlugEn,
 } from "@/lib/sectors";
+import { getSectorPageDetail } from "@/lib/sectorPageDetail";
 
 export function generateStaticParams() {
   return sectorStaticSlugEn();
@@ -15,9 +16,10 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const sector = getSectorBySlugEn(slug);
   if (!sector) return {};
+  const detail = getSectorPageDetail("en", sector);
   return {
     title: `${sector.titles.en} | SYS Mantenimiento`,
-    description: sector.descriptions.en,
+    description: detail?.metaDescription ?? sector.descriptions.en,
   };
 }
 
@@ -28,10 +30,14 @@ export default async function SectorPageEn({ params }) {
   if (!sector) notFound();
 
   return (
-    <SimpleRoutePage
-      crumbs={[{ label: "Home", href: "/en" }, { label: sector.titles.en }]}
-      description={sector.descriptions.en}
-      title={sector.titles.en}
+    <SectorPage
+      locale="en"
+      sector={sector}
+      crumbs={[
+        { label: "Home", href: "/en", isHome: true },
+        { label: "Projects", href: "/en" },
+        { label: sector.titles.en },
+      ]}
     />
   );
 }

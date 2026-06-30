@@ -1,42 +1,33 @@
-import PageBanner from "@/components/header/PageBanner";
-
-import HomeBrandsCarousel from "./HomeBrandsCarousel";
-import HomeSectorGrid from "./HomeSectorGrid";
+import QuoteCtaCard from "@/components/cta/QuoteCtaCard";
+import BrandsCarousel from "@/components/home/BrandsCarousel";
+import HomeHero from "@/components/home/HomeHero";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
+import ProjectsCategoryGrid from "@/components/projects/ProjectsCategoryGrid";
+import ServicesFaqAccordion from "@/components/services/ServicesFaqAccordion";
 
 /**
- * Landing compartido: sector grid + carrusel de marcas + bloque intro.
- * @param {{ locale: 'es' | 'en'; bannerTitle: string; crumbs: { label: string; href?: string }[] }} props
+ * Página de inicio: hero panorámico + grilla por categoría (antes en /proyectos).
+ * @param {{ locale: 'es' | 'en' }} props
  */
-export default function HomeLanding({ locale, bannerTitle, crumbs }) {
-  const intro =
-    locale === "en" ?
-      "Welcome to SYS Mantenimiento. More content will be available here soon."
-    : "Bienvenido a SYS Mantenimiento. Pronto encontrarás más información en este sitio.";
-
+export default function HomeLanding({ locale }) {
   return (
-    <div className="flex flex-1 flex-col">
-      <PageBanner crumbs={crumbs} title={bannerTitle} />
-      <div className="px-4 sm:px-6">
-        <div className="mx-auto w-full max-w-6xl overflow-hidden border border-zinc-200/80 shadow-sm lg:max-w-[1200px]">
-          <HomeSectorGrid locale={locale} />
-        </div>
-        <div className="mx-auto mt-10 w-full max-w-6xl lg:mt-12 lg:max-w-[1200px]">
-          <HomeBrandsCarousel locale={locale} />
+    <div className="flex flex-1 flex-col bg-white">
+      <HomeHero locale={locale} />
+      <BrandsCarousel locale={locale} />
+      <ProjectsCategoryGrid locale={locale} />
+      <WhyChooseUs locale={locale} />
+      <div className="bg-surface-muted px-4 py-12 sm:px-6 sm:py-14">
+        <div className="mx-auto w-full max-w-6xl lg:max-w-[1200px]">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <div className="lg:col-span-7">
+              <ServicesFaqAccordion locale={locale} />
+            </div>
+            <div className="lg:col-span-5">
+              <QuoteCtaCard locale={locale} />
+            </div>
+          </div>
         </div>
       </div>
-      <main className="flex-1 bg-surface-muted">
-        <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:max-w-[1200px]">
-          <article className="rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm sm:p-10">
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
-              <span className="text-sys-yellow">—</span>{" "}
-              <span className="text-zinc-900">SYS Mantenimiento</span>
-            </h2>
-            <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-zinc-600">
-              {intro}
-            </p>
-          </article>
-        </div>
-      </main>
     </div>
   );
 }

@@ -9,6 +9,7 @@
   --footer-bg: #09090b;
   --background: var(--sys-white);
   --foreground: var(--sys-black);
+  --toastify-z-index: 100000;
 }
 
 @theme inline {
@@ -33,24 +34,29 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-@keyframes home-marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.home-marquee-track {
-  display: flex;
-  width: max-content;
-  animation: home-marquee 42s linear infinite;
-}
-
-.home-marquee-strip:hover .home-marquee-track {
-  animation-play-state: paused;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .home-marquee-track {
+  .whatsapp-float-bounce {
     animation: none;
+    will-change: auto;
   }
+}
+
+@keyframes whatsapp-float-bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.whatsapp-float-bounce {
+  animation: whatsapp-float-bounce 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+.whatsapp-float-bounce:hover,
+.whatsapp-float-link:focus-visible .whatsapp-float-bounce {
+  animation-play-state: paused;
 }

@@ -1,18 +1,11 @@
-import SimpleRoutePage from "@/components/SimpleRoutePage";
+import ContactPageEn from "@/components/contact/ContactPageEn";
 
 export const metadata = {
   title: "Contact | SYS Mantenimiento",
+  description:
+    "Reach SYS Mantenimiento in Costa Rica: office in Oficentro Palacio, phone, email, and a quick form to start your maintenance inquiry.",
 };
 
 export default function EnglishContactPage() {
-  return (
-    <SimpleRoutePage
-      crumbs={[
-        { href: "/en", label: "Home" },
-        { label: "Contact" },
-      ]}
-      description="Get in touch. Contact details are also in the footer."
-      title="Contact"
-    />
-  );
+  return <ContactPageEn />;
 }

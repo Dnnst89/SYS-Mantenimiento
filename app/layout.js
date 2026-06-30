@@ -1,12 +1,20 @@
-import { Geist } from "next/font/google";
+import { Geist, Space_Grotesk } from "next/font/google";
 import LocaleHtmlLang from "@/components/LocaleHtmlLang";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import ToastifyHost from "@/components/ToastifyHost";
+import WhatsappFloat from "@/components/WhatsappFloat";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display-hero",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -16,12 +24,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${geistSans.variable} h-full antialiased`}>
+    <html
+      lang="es"
+      className={`${geistSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col bg-sys-white text-sys-black">
         <LocaleHtmlLang />
         <Header />
         <div className="flex flex-1 flex-col">{children}</div>
         <Footer />
+        <ToastifyHost />
+        <WhatsappFloat />
       </body>
     </html>
   );
