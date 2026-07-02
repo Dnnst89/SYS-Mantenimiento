@@ -36,7 +36,7 @@ export default function SectorPageBottomCta({ title, subtitle, cta, href }) {
   return (
     <div className="mx-auto mt-12 w-full max-w-6xl px-4 sm:mt-14 sm:px-6 lg:mt-16 lg:max-w-[1200px]">
       <div
-        className="relative overflow-hidden rounded-2xl bg-zinc-900 px-5 py-8 shadow-lg sm:px-8 sm:py-9 lg:px-10 lg:py-10"
+        className="relative overflow-hidden rounded-2xl bg-sys-black px-5 py-8 shadow-lg sm:px-8 sm:py-9 lg:px-10 lg:py-10"
         style={{
           backgroundImage: `linear-gradient(135deg, rgba(255,255,255,0.04) 25%, transparent 25%),
             linear-gradient(225deg, rgba(255,255,255,0.03) 25%, transparent 25%),
@@ -45,10 +45,10 @@ export default function SectorPageBottomCta({ title, subtitle, cta, href }) {
           backgroundPosition: "0 0, 14px 0, 0 14px",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/40 to-transparent" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-sys-black/40 to-transparent" aria-hidden />
         <div className="relative z-10 flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
           <div className="flex max-w-xl gap-4 sm:gap-5">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-sys-yellow text-zinc-950 shadow-md sm:h-16 sm:w-16">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-sys-yellow text-sys-black shadow-md sm:h-16 sm:w-16">
               <PhoneIcon className="h-6 w-6 sm:h-7 sm:w-7" />
             </div>
             <div>
@@ -60,7 +60,7 @@ export default function SectorPageBottomCta({ title, subtitle, cta, href }) {
           </div>
           <Link
             href={href}
-            className="inline-flex shrink-0 items-center gap-2 rounded-[10px] bg-sys-yellow px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-zinc-950 shadow-md transition hover:bg-sys-yellow-bright"
+            className="inline-flex shrink-0 items-center gap-2 rounded-[10px] bg-sys-yellow px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-sys-black shadow-md transition hover:bg-sys-yellow-bright"
           >
             {cta}
             <ArrowRight className="h-4 w-4" />

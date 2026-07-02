@@ -38,7 +38,7 @@ export default function Navbar({ className = "", stacked = false }) {
 
   const inactiveCls = stacked ?
       "text-zinc-700 transition hover:text-sys-yellow"
-    : "text-zinc-500 after:scale-x-0 hover:text-zinc-900 hover:after:scale-x-100";
+    : "text-zinc-400 after:scale-x-0 hover:text-white hover:after:scale-x-100";
 
   const activeCls =
     stacked ? "text-sys-yellow" : "text-sys-yellow after:scale-x-100";
@@ -91,7 +91,7 @@ export default function Navbar({ className = "", stacked = false }) {
         className={
           stacked ?
             "inline-flex w-fit shrink-0 rounded-lg p-2 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow"
-          : "group ml-2 inline-flex shrink-0 rounded-lg p-1 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow md:ml-4"
+          : "group ml-2 inline-flex shrink-0 rounded-lg p-1 text-zinc-400 transition hover:bg-white/10 hover:text-sys-yellow md:ml-4"
         }
         aria-label="Facebook"
       >

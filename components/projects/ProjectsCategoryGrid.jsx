@@ -20,7 +20,7 @@ export default function ProjectsCategoryGrid({ locale }) {
         <header className="mb-9 text-center sm:mb-11">
           <h2
             id="projects-categories-heading"
-            className="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl"
+            className="text-2xl font-bold tracking-tight text-sys-black sm:text-3xl"
           >
             {sectionTitle}
           </h2>
@@ -54,7 +54,7 @@ export default function ProjectsCategoryGrid({ locale }) {
 
                 {/* Category icon: dark fill + thin yellow ring + yellow strokes */}
                 <div
-                  className="absolute left-3.5 top-3.5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-black/65 shadow-md ring-2 ring-sys-yellow backdrop-blur-[2px] sm:left-4 sm:top-4 sm:h-12 sm:w-12"
+                  className="absolute left-3.5 top-3.5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-sys-black/65 shadow-md ring-2 ring-sys-yellow backdrop-blur-[2px] sm:left-4 sm:top-4 sm:h-12 sm:w-12"
                   aria-hidden
                 >
                   <StrokeIcon
@@ -76,7 +76,7 @@ export default function ProjectsCategoryGrid({ locale }) {
                     </div>
                     <div className="flex items-center">
                       <span
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-sys-yellow bg-black/25 text-sys-yellow backdrop-blur-[1px] transition group-hover:border-sys-yellow-bright group-hover:text-sys-yellow-bright"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-sys-yellow bg-sys-black/25 text-sys-yellow backdrop-blur-[1px] transition group-hover:border-sys-yellow-bright group-hover:text-sys-yellow-bright"
                         aria-hidden
                       >
                         <StrokeIcon
