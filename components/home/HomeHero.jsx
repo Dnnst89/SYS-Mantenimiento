@@ -129,7 +129,7 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
           <div className="mt-8 flex w-full flex-wrap items-center gap-3 sm:mt-9 lg:mt-10">
             <Link
               href={t.contactHref}
-              className="group inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full border-2 border-transparent bg-sys-yellow px-5 text-[13px] font-semibold leading-none text-zinc-950 shadow-sm transition-colors duration-200 hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:h-12 sm:px-6 sm:text-sm"
+              className="group inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full border-2 border-transparent bg-sys-yellow px-5 text-[13px] font-semibold leading-none text-sys-black shadow-sm transition-colors duration-200 hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:h-12 sm:px-6 sm:text-sm"
             >
               <span className="min-w-0 shrink">{t.ctaPrimary}</span>
               <ArrowRightIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-out will-change-transform group-hover:translate-x-1 sm:h-4 sm:w-4" />

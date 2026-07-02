@@ -21,7 +21,7 @@ export default function SectorPageExperience({ detail }) {
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12 lg:max-w-[1200px] lg:py-14">
         <h2
           id="sector-experience-heading"
-          className="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl"
+          className="text-2xl font-bold tracking-tight text-sys-black sm:text-3xl"
         >
           {detail.leadHeading}
         </h2>
@@ -65,13 +65,13 @@ export default function SectorPageExperience({ detail }) {
         </div>
 
         <div className="mt-12 rounded-2xl border border-zinc-200/90 bg-zinc-50/80 p-6 sm:p-8">
-          <h3 className="text-lg font-bold text-zinc-950 sm:text-xl">
+          <h3 className="text-lg font-bold text-sys-black sm:text-xl">
             {detail.processTitle}
           </h3>
           <ol className="mt-6 grid gap-6 sm:grid-cols-3 sm:gap-5">
             {detail.processSteps.map((step) => (
               <li key={step.title}>
-                <p className="font-semibold text-zinc-900">{step.title}</p>
+                <p className="font-semibold text-sys-black">{step.title}</p>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600">{step.body}</p>
               </li>
             ))}

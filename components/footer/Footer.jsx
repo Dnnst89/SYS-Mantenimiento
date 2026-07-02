@@ -77,13 +77,13 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-auto bg-footer-bg text-zinc-400">
+    <footer className="relative mt-auto bg-sys-black text-zinc-400">
       <div
         className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-sys-yellow/90 to-transparent"
         aria-hidden
       />
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-14 sm:px-6 lg:max-w-[1200px]">
-        <div className="grid gap-12 border-b border-zinc-800 pb-12 lg:grid-cols-12 lg:gap-10">
+        <div className="grid gap-12 border-b border-white/10 pb-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <div className="p-1">
               <Logo variant="compact" />

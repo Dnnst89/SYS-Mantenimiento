@@ -23,7 +23,7 @@ export default function SuppliersIntroLead({ locale }) {
         </div>
         <h2
           id="suppliers-intro-lead-heading"
-          className="max-w-3xl text-balance text-2xl font-semibold leading-[1.12] tracking-tight text-zinc-950 sm:text-3xl lg:text-[2.35rem] lg:leading-[1.1]"
+          className="max-w-3xl text-balance text-2xl font-semibold leading-[1.12] tracking-tight text-sys-black sm:text-3xl lg:text-[2.35rem] lg:leading-[1.1]"
           style={{
             fontFamily:
               "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",

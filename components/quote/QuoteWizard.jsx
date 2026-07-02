@@ -140,7 +140,7 @@ export default function QuoteWizard({ locale }) {
     : c.stepLabel.replace("{n}", String(step + 1)).replace("{total}", String(totalFormSteps));
 
   const inputClass =
-    "w-full rounded-2xl border border-zinc-200/90 bg-zinc-50/90 px-4 py-3.5 text-[15px] text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-sys-yellow/70 focus:bg-white focus:ring-2 focus:ring-sys-yellow/20";
+    "w-full rounded-2xl border border-zinc-200/90 bg-zinc-50/90 px-4 py-3.5 text-[15px] text-sys-black outline-none transition placeholder:text-zinc-400 focus:border-sys-yellow/70 focus:bg-white focus:ring-2 focus:ring-sys-yellow/20";
 
   const selectClass = `${inputClass} cursor-pointer pr-10`;
 
@@ -148,10 +148,10 @@ export default function QuoteWizard({ locale }) {
     const done = isReview || i < step;
     const current = !isReview && i === step;
     if (done) {
-      return "border-sys-yellow bg-sys-yellow text-zinc-950 shadow-[0_0_0_1px_rgba(0,0,0,0.06)]";
+      return "border-sys-yellow bg-sys-yellow text-sys-black shadow-[0_0_0_1px_rgba(0,0,0,0.06)]";
     }
     if (current) {
-      return "border-sys-yellow bg-zinc-950 text-sys-yellow shadow-[0_0_0_4px_rgba(232,214,0,0.22)]";
+      return "border-sys-yellow bg-sys-black text-sys-yellow shadow-[0_0_0_4px_rgba(232,214,0,0.22)]";
     }
     return "border-zinc-300 bg-white text-zinc-400";
   }
@@ -159,7 +159,7 @@ export default function QuoteWizard({ locale }) {
   function stepTitleClass(i) {
     const done = isReview || i < step;
     const current = !isReview && i === step;
-    if (current) return "text-zinc-950 font-semibold";
+    if (current) return "text-sys-black font-semibold";
     if (done) return "text-zinc-500";
     return "text-zinc-400";
   }
@@ -242,7 +242,7 @@ export default function QuoteWizard({ locale }) {
         {/* Panel formulario */}
         <div className="relative -mt-6 sm:-mt-8 lg:mt-0 lg:pt-4">
           <div
-            className="relative overflow-hidden rounded-[1.65rem] bg-white text-zinc-900 shadow-[0_36px_100px_-36px_rgba(0,0,0,0.78)] ring-1 ring-white/25 sm:rounded-[2rem] lg:rounded-[2rem] lg:shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)]"
+            className="relative overflow-hidden rounded-[1.65rem] bg-white text-sys-black shadow-[0_36px_100px_-36px_rgba(0,0,0,0.78)] ring-1 ring-white/25 sm:rounded-[2rem] lg:rounded-[2rem] lg:shadow-[0_40px_120px_-40px_rgba(0,0,0,0.85)]"
             style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
           >
             <div
@@ -269,7 +269,7 @@ export default function QuoteWizard({ locale }) {
               {!isReview && currentStepMeta ?
                 <>
                   <h2
-                    className="text-[1.35rem] font-semibold leading-snug tracking-tight text-zinc-950 sm:text-2xl sm:leading-tight lg:hidden"
+                    className="text-[1.35rem] font-semibold leading-snug tracking-tight text-sys-black sm:text-2xl sm:leading-tight lg:hidden"
                     style={{ fontFamily: displayFont }}
                   >
                     {currentStepMeta.title}
@@ -426,7 +426,7 @@ export default function QuoteWizard({ locale }) {
                       <button
                         type="button"
                         onClick={goBack}
-                        className="inline-flex items-center justify-center gap-1.5 self-start rounded-xl py-2.5 text-sm font-medium text-zinc-500 transition hover:bg-zinc-50 hover:text-zinc-900 sm:py-2"
+                        className="inline-flex items-center justify-center gap-1.5 self-start rounded-xl py-2.5 text-sm font-medium text-zinc-500 transition hover:bg-zinc-50 hover:text-sys-black sm:py-2"
                       >
                         <ChevronLeftIcon className="h-4 w-4 shrink-0 opacity-70" />
                         {c.back}
@@ -435,7 +435,7 @@ export default function QuoteWizard({ locale }) {
                     <button
                       type="button"
                       onClick={goNext}
-                      className="w-full rounded-2xl border-2 border-transparent bg-sys-yellow px-6 py-3.5 text-sm font-semibold text-zinc-950 shadow-sm transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:w-auto sm:min-w-[11rem]"
+                      className="w-full rounded-2xl border-2 border-transparent bg-sys-yellow px-6 py-3.5 text-sm font-semibold text-sys-black shadow-sm transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:w-auto sm:min-w-[11rem]"
                     >
                       {c.next}
                     </button>
@@ -446,7 +446,7 @@ export default function QuoteWizard({ locale }) {
               {isReview ?
                 <>
                   <h2
-                    className="text-[1.35rem] font-semibold leading-snug tracking-tight text-zinc-950 sm:text-2xl sm:leading-tight lg:hidden"
+                    className="text-[1.35rem] font-semibold leading-snug tracking-tight text-sys-black sm:text-2xl sm:leading-tight lg:hidden"
                     style={{ fontFamily: displayFont }}
                   >
                     {c.reviewTitle}
@@ -462,7 +462,7 @@ export default function QuoteWizard({ locale }) {
                     <p className="mt-2 max-w-lg text-base leading-relaxed text-zinc-600">{c.reviewHint}</p>
                   </div>
 
-                  <pre className="mt-7 max-h-[min(42vh,300px)] overflow-auto whitespace-pre-wrap rounded-2xl border border-zinc-200/80 bg-zinc-50/90 p-4 text-[13px] leading-relaxed text-zinc-800 sm:p-5 lg:mt-8">
+                  <pre className="mt-7 max-h-[min(42vh,300px)] overflow-auto whitespace-pre-wrap rounded-2xl border border-zinc-200/80 bg-zinc-50/90 p-4 text-[13px] leading-relaxed text-sys-black/80 sm:p-5 lg:mt-8">
                     {buildQuoteWhatsAppMessage(locale, values)}
                   </pre>
 
@@ -470,7 +470,7 @@ export default function QuoteWizard({ locale }) {
                     <button
                       type="button"
                       onClick={goBack}
-                      className="inline-flex items-center justify-center gap-1.5 self-start rounded-xl py-2.5 text-sm font-medium text-zinc-500 transition hover:bg-zinc-50 hover:text-zinc-900 sm:py-2"
+                      className="inline-flex items-center justify-center gap-1.5 self-start rounded-xl py-2.5 text-sm font-medium text-zinc-500 transition hover:bg-zinc-50 hover:text-sys-black sm:py-2"
                     >
                       <ChevronLeftIcon className="h-4 w-4 shrink-0 opacity-70" />
                       {c.back}
@@ -479,7 +479,7 @@ export default function QuoteWizard({ locale }) {
                       href={waHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center rounded-2xl border-2 border-transparent bg-sys-yellow px-6 py-3.5 text-sm font-semibold text-zinc-950 shadow-sm transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:w-auto sm:min-w-[11rem]"
+                      className="inline-flex w-full items-center justify-center rounded-2xl border-2 border-transparent bg-sys-yellow px-6 py-3.5 text-sm font-semibold text-sys-black shadow-sm transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:w-auto sm:min-w-[11rem]"
                     >
                       {c.openWhatsapp}
                     </a>
