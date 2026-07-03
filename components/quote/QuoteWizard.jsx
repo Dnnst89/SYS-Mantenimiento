@@ -211,12 +211,13 @@ export default function QuoteWizard({ locale }) {
             })}
           </div>
 
-          <ol className="mt-10 hidden list-none space-y-5 p-0 lg:block">
+          <ol className="mt-10 hidden list-none space-y-5 p-0 lg:block px-4 overflow-visible">
             {c.steps.map((st, i) => (
               <li key={st.key} className="flex gap-4">
                 <span
                   className={[
-                    "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-colors",
+                    /*"mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-colors",*/
+                    "ml-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-colors mx-1.5",
                     stepBadgeClass(i),
                   ].join(" ")}
                   aria-hidden
