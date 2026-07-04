@@ -86,7 +86,7 @@ export default function WhyChooseUs({ locale }) {
         </div>
 
         {/* Grilla 3×2 */}
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:mt-20 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 lg:mt-20 lg:grid-cols-2 lg:gap-6">
           {t.features.map((f) => (
             <article
               key={f.n}
