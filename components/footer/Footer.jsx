@@ -179,7 +179,7 @@ export default function Footer() {
                 <span className="pt-0.5 text-zinc-400">
                   <a
                     href={`mailto:${COMPANY_EMAIL}`}
-                    className="whitespace-nowrap font-medium text-sys-yellow underline decoration-sys-yellow/30 underline-offset-4 transition hover:decoration-sys-yellow"
+                    className="break-all font-medium text-sys-yellow underline decoration-sys-yellow/30 underline-offset-4 transition hover:decoration-sys-yellow"
                   >
                     {COMPANY_EMAIL}
                   </a>
