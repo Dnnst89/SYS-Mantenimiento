@@ -138,14 +138,14 @@ export default function Footer() {
                 <IconHouse />
                 <span className="pt-0.5">
                   <a
-                    href="https://maps.google.com/?q=Oficentro+Palacio,+San+José,+Costa+Rica"
+                    href="https://maps.app.goo.gl/4uj6NBwSRdNoyRpu9"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-sys-yellow transition hover:text-sys-yellow-bright"
                   >
-                    Oficentro Palacio
+                    Alajuela
                   </a>
-                  <span className="text-zinc-500"> · San José, Costa Rica</span>
+                  <span className="text-zinc-500"> · Alajuela Centro / Liberia Guanacaste</span>
                 </span>
               </li>
               <li className="flex gap-3">
@@ -153,10 +153,10 @@ export default function Footer() {
                 <span className="pt-0.5 text-zinc-400">
                   Tel:{" "}
                   <a
-                    href="tel:+50640012999"
+                    href="tel:+50660903460"
                     className="font-medium text-sys-yellow tabular-nums transition hover:text-sys-yellow-bright"
                   >
-                    +(506) 4001-2999
+                    +(506) 8491-8854
                   </a>
                 </span>
               </li>
