@@ -50,7 +50,7 @@ const COPY = {
 
 /** Formato más ancho tipo banner; misma foto que categorías (ingeniería / actividad en planta). */
 const HERO_IMAGE_REMOTE =
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=2400&h=960&q=85&auto=format&fit=crop";
+"/hero_image/imagen_de_portada.jpeg"; 
 
 function resolveHeroImageSrc() {
   const raw =
@@ -91,8 +91,18 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
           fill
           priority={imagePriority}
           sizes="100vw"
-          className="object-cover object-[12%_48%] sm:object-[16%_46%] lg:object-[20%_44%] xl:object-[22%_42%]"
+          className="object-cover object-[12%_48%] sm:object-[16%_46%] lg:object-[20%_44%] xl:object-[22%_42%] hidden md:block" // bloque agregado para mostrarse en pantallas medianas y grandes, oculto en móviles
         />
+
+        <Image
+          src="/hero_image/image_mobile.webp"
+          alt="SYS Mantenimiento Móvil"
+          priority={priority}
+          fill
+          sizes="(max-width: 768px) 100vw"
+          className="object-cover object-[90%_50%] block md:hidden" // bloque agregado para mostrarse en móviles 
+        />
+
         <div className="absolute inset-0 bg-sys-black/40 lg:bg-sys-black/32" />
         <div className="absolute inset-0 bg-gradient-to-r from-sys-black from-[0%] via-sys-black/90 via-[38%] to-transparent to-[82%] lg:via-[40%] lg:to-[90%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-sys-black/45 via-transparent to-sys-black/20 lg:from-sys-black/35 lg:to-sys-black/10" />
