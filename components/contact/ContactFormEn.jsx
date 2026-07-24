@@ -22,7 +22,7 @@ const TOPICS = [
 
 function fieldClass(hasErr) {
   const base =
-    "mt-1.5 w-full rounded-xl border bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:bg-white disabled:cursor-not-allowed disabled:opacity-60";
+    "mt-1.5 w-full rounded-xl border bg-zinc-50/50 px-4 py-3 text-sm text-sys-black outline-none transition placeholder:text-zinc-400 focus:bg-white disabled:cursor-not-allowed disabled:opacity-60";
   return hasErr ?
       `${base} border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-200`
     : `${base} border-zinc-200 focus:border-sys-yellow focus:ring-1 focus:ring-sys-yellow`;
@@ -127,14 +127,14 @@ export default function ContactFormEn() {
 
   return (
     <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-[0_12px_48px_-20px_rgba(0,0,0,0.12)] sm:p-8">
-      <h2 className="text-lg font-semibold tracking-tight text-zinc-900 sm:text-xl">
+      <h2 className="text-lg font-semibold tracking-tight text-sys-black sm:text-xl">
         Send a message
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-zinc-600">
         We receive submissions in our inbox. You can also email us directly at{" "}
         <a
           href={`mailto:${COMPANY_EMAIL}`}
-          className="font-medium text-zinc-800 underline decoration-zinc-300 underline-offset-2 hover:text-sys-yellow hover:decoration-sys-yellow/60"
+          className="font-medium text-sys-black/80 underline decoration-zinc-300 underline-offset-2 hover:text-sys-yellow hover:decoration-sys-yellow/60"
         >
           {COMPANY_EMAIL}
         </a>
@@ -273,7 +273,7 @@ export default function ContactFormEn() {
               disabled={inputsDisabled}
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="mt-1.5 w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition focus:border-sys-yellow focus:bg-white focus:ring-1 focus:ring-sys-yellow disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-1.5 w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm font-medium text-sys-black outline-none transition focus:border-sys-yellow focus:bg-white focus:ring-1 focus:ring-sys-yellow disabled:cursor-not-allowed disabled:opacity-60"
             >
               {TOPICS.map((t) => (
                 <option key={t.value} value={t.value}>
@@ -316,7 +316,7 @@ export default function ContactFormEn() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-xl bg-zinc-950 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
+            className="w-full rounded-xl bg-sys-black px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:min-w-[200px]"
           >
             {submitting ? "Sending…" : "Send message"}
           </button>

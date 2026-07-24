@@ -20,12 +20,12 @@ export default function SectorCategoryHero({ locale, sector, crumbs }) {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-black pb-10 sm:pb-12 lg:pb-14"
+      className="relative w-full overflow-hidden bg-sys-black pb-10 sm:pb-12 lg:pb-14"
       aria-labelledby={id}
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col px-4 pt-5 sm:px-6 sm:pt-6 lg:max-w-[1200px] lg:min-h-[480px] xl:min-h-[520px] lg:flex-row lg:items-stretch lg:pt-8">
         <div
-          className="relative z-20 order-2 flex w-full flex-col items-start justify-center bg-black pb-6 pt-2 sm:pb-8 lg:order-1 lg:w-[min(46%,520px)] lg:flex-none lg:shrink-0 lg:py-6 lg:pr-4"
+          className="relative z-20 order-2 flex w-full flex-col items-start justify-center bg-sys-black pb-6 pt-2 sm:pb-8 lg:order-1 lg:w-[min(46%,520px)] lg:flex-none lg:shrink-0 lg:py-6 lg:pr-4"
           style={{
             fontFamily:
               "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",

@@ -25,11 +25,11 @@ export function IconMail({ className }) {
 export function ContactCard({ icon: Icon, title, children }) {
   return (
     <div className="flex gap-4 rounded-2xl border border-zinc-200/90 bg-white p-5 shadow-sm">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-sys-yellow">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sys-black text-sys-yellow">
         <Icon className="h-5 w-5" />
       </div>
       <div className="min-w-0 pt-0.5">
-        <h3 className="text-sm font-semibold text-zinc-900">{title}</h3>
+        <h3 className="text-sm font-semibold text-sys-black">{title}</h3>
         <div className="mt-1.5 text-sm leading-relaxed text-zinc-600">{children}</div>
       </div>
     </div>

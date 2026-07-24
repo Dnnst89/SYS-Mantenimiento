@@ -17,7 +17,7 @@ export default function SectorWorkCatalog({ title, subtitle, items }) {
         <div className="max-w-3xl">
           <h2
             id="sector-catalog-heading"
-            className="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl"
+            className="text-2xl font-bold tracking-tight text-sys-black sm:text-3xl"
           >
             {title}
           </h2>

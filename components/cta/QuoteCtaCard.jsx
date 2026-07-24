@@ -42,13 +42,6 @@ function ArrowRightIcon({ className }) {
 const CTA_IMAGE =
   "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=900&q=85&auto=format&fit=crop";
 
-/** Degradado ancho y suave: negro → transparencia en un tramo largo (referencia diseño). */
-const GRADIENT_DESKTOP =
-  "linear-gradient(90deg,#000 0%,rgba(0,0,0,0.96) 5%,rgba(0,0,0,0.88) 11%,rgba(0,0,0,0.74) 19%,rgba(0,0,0,0.56) 30%,rgba(0,0,0,0.36) 42%,rgba(0,0,0,0.20) 54%,rgba(0,0,0,0.10) 66%,rgba(0,0,0,0.04) 78%,rgba(0,0,0,0) 92%)";
-
-const GRADIENT_MOBILE =
-  "linear-gradient(180deg,#000 0%,rgba(0,0,0,0.94) 10%,rgba(0,0,0,0.78) 24%,rgba(0,0,0,0.52) 42%,rgba(0,0,0,0.28) 58%,rgba(0,0,0,0.12) 74%,rgba(0,0,0,0.04) 88%,rgba(0,0,0,0) 100%)";
-
 /**
  * CTA reutilizable: **una sola imagen** a todo el bloque + **degradado extenso** encima
  * (sin cortar en dos celdas “panel negro | foto”).
@@ -61,7 +54,7 @@ export default function QuoteCtaCard({ locale }) {
 
   return (
     <aside
-      className="relative isolate min-h-[19rem] w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)] lg:min-h-[17.5rem]"
+      className="relative isolate min-h-[19rem] w-full max-w-full overflow-hidden rounded-2xl border border-white/10 bg-sys-black shadow-[0_20px_50px_-20px_rgba(0,0,0,0.45)] lg:min-h-[17.5rem]"
       aria-labelledby="quote-cta-card-title"
     >
       <div className="absolute inset-0">
@@ -75,13 +68,11 @@ export default function QuoteCtaCard({ locale }) {
       </div>
 
       <div
-        className="pointer-events-none absolute inset-0 z-[1] lg:hidden"
-        style={{ background: GRADIENT_MOBILE }}
+        className="quote-cta-gradient-mobile pointer-events-none absolute inset-0 z-[1] lg:hidden"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-        style={{ background: GRADIENT_DESKTOP }}
+        className="quote-cta-gradient-desktop pointer-events-none absolute inset-0 z-[1] hidden lg:block"
         aria-hidden
       />
 
@@ -113,7 +104,7 @@ export default function QuoteCtaCard({ locale }) {
         <p className="max-w-md text-[15px] leading-relaxed text-white/90">{t.body}</p>
         <Link
           href={href}
-          className="group inline-flex h-11 w-full max-w-xs shrink-0 items-center justify-center gap-2 self-start rounded-full border-2 border-transparent bg-sys-yellow px-5 text-[13px] font-semibold leading-none text-zinc-950 shadow-sm transition-colors duration-200 hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:h-12 sm:w-auto sm:max-w-none sm:px-6 sm:text-sm"
+          className="group inline-flex h-11 w-full max-w-xs shrink-0 items-center justify-center gap-2 self-start rounded-full border-2 border-transparent bg-sys-yellow px-5 text-[13px] font-semibold leading-none text-sys-black shadow-sm transition-colors duration-200 hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:h-12 sm:w-auto sm:max-w-none sm:px-6 sm:text-sm"
         >
           <span>{t.cta}</span>
           <ArrowRightIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-4 sm:w-4" />
