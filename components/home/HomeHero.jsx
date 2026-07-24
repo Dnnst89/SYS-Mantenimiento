@@ -112,7 +112,7 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
         <HeroBreadcrumbs />
         <div className="flex min-h-0 flex-1 flex-col justify-center">
           <div
-            className="w-full max-w-[min(100%,520px)]"
+            className="w-full max-w-[min(100%,520px)] lg:max-w-2xl"
             style={{
               fontFamily:
                 "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -133,7 +133,9 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
               {t.line2}
             </span>
           </h1>
-          <p className="mt-6 w-full max-w-[40rem] text-pretty text-[15px] font-normal leading-[1.7] text-white/95 sm:mt-7 sm:text-base lg:mt-8 lg:text-[1.0625rem] lg:leading-[1.72]">
+          <p /*className="mt-6 w-full max-w-[40rem] lg:max-w-none text-pretty text-[15px] font-normal leading-[1.7] text-white/95 sm:mt-7 sm:text-base lg:mt-8 lg:text-[1.0625rem] lg:leading-[1.72]">*/
+            className="mt-6 w-full max-w-[40rem] lg:max-w-none text-pretty lg:text-left text-[15px] font-normal leading-[1.7] text-white/95">
+
             {t.body}
           </p>
           <div className="mt-8 flex w-full flex-wrap items-center gap-3 sm:mt-9 lg:mt-10">
