@@ -95,7 +95,7 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
         />
 
         <Image
-          src="/hero_image/image_mobile.webp"
+          src={HERO_IMAGE}
           alt="SYS Mantenimiento Móvil"
           priority={priority}
           fill
