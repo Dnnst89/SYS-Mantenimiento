@@ -148,10 +148,10 @@ export default function HomeHero({ locale, copy, headingId = "home-hero-heading"
               href={wa}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full border-2 border-white/90 bg-transparent px-5 text-[13px] font-semibold leading-none text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:h-12 sm:px-6 sm:text-sm"
+              className="inline-flex h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full border-2 border-white/90 bg-transparent px-5 text-[13px] font-semibold leading-none text-white transition-colors  hover:bg-white/10 hover:border-[#25D366] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:h-12 sm:px-6 sm:text-sm"
             >
               <span className="min-w-0 shrink">{t.ctaWhatsapp}</span>
-              <WhatsappIcon className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+              <WhatsappIcon className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 text-[#25D366]" />
             </a>
           </div>
         </div>
