@@ -33,8 +33,7 @@ function ArrowRightIcon({ className }) {
   );
 }
 
-const CTA_IMAGE =
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=900&q=85&auto=format&fit=crop";
+const CTA_IMAGE = "/hero_image/image_mobile.webp";
 
 /**
  * CTA reutilizable: **una sola imagen** a todo el bloque + **degradado extenso** encima
@@ -57,13 +56,14 @@ export default function QuoteCtaCard({ locale }) {
           alt=""
           fill
           sizes="(max-width: 1023px) 100vw, 520px"
-          className="object-cover object-[70%_center] sm:object-[68%_42%] lg:object-[62%_38%]"
+          className="object-cover object-[80%_center] sm:object-[90%_42%] lg:object-[90%_38%]"
         />
       </div>
 
       <div
-        className="quote-cta-gradient-mobile pointer-events-none absolute inset-0 z-[1] lg:hidden"
+        className="quote-cta-gradient-mobile bg-black/60 pointer-events-none absolute inset-0 z-[1]"
         aria-hidden
+
       />
       <div
         className="quote-cta-gradient-desktop pointer-events-none absolute inset-0 z-[1] hidden lg:block"
