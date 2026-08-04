@@ -6,19 +6,13 @@ import { quoteCtaCopy } from "@/lib/servicesPageContent";
 
 function PhoneBadgeIcon({ className }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
+    <Image
+      src="/logo-sys-mantenimiento.png"
+      alt="Logo SyS Mantenimiento."
+      width={64}
+      height={80}
       className={className}
-      aria-hidden
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M15.6 14.4c-.3.5-1.1 1-2.6 1-3.3 0-6-2.7-6-6 0-1.5.5-2.3 1-2.6.4-.2.9-.1 1.2.2l1.7 1.7c.2.2.2.6 0 .8l-.6.6c-.2.2-.2.5 0 .7 1.1 1.9 2.6 3.4 4.5 4.5.2.2.5.2.7 0l.6-.6c.2-.2.6-.2.8 0l1.7 1.7c.3.3.4.8.2 1.2z" />
-    </svg>
+    />
   );
 }
 
@@ -83,10 +77,10 @@ export default function QuoteCtaCard({ locale }) {
         }}
       >
         <div
-          className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-sys-yellow text-sys-yellow"
+          className="inline-flex h-12 w-12 shrink-0 items-center justify-center"
           aria-hidden
         >
-          <PhoneBadgeIcon className="h-6 w-6" />
+          <PhoneBadgeIcon className="h-10 w-12" />
         </div>
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sys-yellow sm:text-xs">
           {t.eyebrow}
