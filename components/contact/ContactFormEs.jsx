@@ -63,7 +63,7 @@ export default function ContactFormEs() {
     const topicLabel = TOPICS.find((t) => t.value === topic)?.label ?? topic;
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
