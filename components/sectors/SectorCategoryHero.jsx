@@ -91,7 +91,7 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
   return (
     <div className="relative">
       <section
-        className="relative flex min-h-[min(72dvh,560px)] w-full overflow-hidden bg-sys-black sm:min-h-[min(74dvh,580px)] lg:min-h-[min(60dvh,480px)] xl:min-h-[min(62dvh,500px)]"
+        className="relative flex min-h-[min(80dvh,620px)] w-full overflow-hidden bg-sys-black sm:min-h-[min(82dvh,640px)] lg:min-h-[min(68dvh,560px)] xl:min-h-[min(70dvh,580px)]"
         aria-labelledby={id}
       >
         {/* Imagen de fondo full-bleed */}
@@ -102,7 +102,7 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[70%_45%] lg:object-[62%_42%]"
+            className="object-cover object-[55%_38%] lg:object-[50%_32%]"
           />
         </div>
 
@@ -157,10 +157,10 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
           </div>
 
           {/* Stats bar */}
-
         </div>
-                <div
-            className="absolute z-20 bottom-4 right-4 sm:bottom-6 sm:right-6 lg:right-8 flex w-full max-w-[min(90%,560px)] items-stretch justify-between gap-2 rounded-xl bg-black/85 px-3 py-3 shadow-[0_0_30px_rgba(200,200,200,0.50)] backdrop-blur-sm sm:mt-10 sm:gap-3 sm:px-4 sm:py-4"
+      </section>
+      <div
+            className="absolute z-20 -bottom-6 right-4 sm:-bottom-8sm:right-6 lg:right-8 flex w-full max-w-[min(90%,560px)] items-stretch justify-between gap-2 rounded-xl bg-black/85 px-3 py-3 shadow-[0_0_30px_rgba(200,200,200,0.50)] backdrop-blur-sm sm:mt-10 sm:gap-3 sm:px-4 sm:py-4"
             role="list"
           >
             {heroStats.map((stat, index) => {
@@ -198,8 +198,7 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
                 </div>
               );
             })}
-          </div>
-      </section>
+      </div>
       </div>
   );
 }

@@ -84,6 +84,25 @@ export default function Navbar({ className = "", stacked = false }) {
           </Link>
         </li>
       </ul>
+      <Link
+          href={locale === "en" ? "/en/contacto" : "/contacto"}
+          className={
+            stacked
+              ? "mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-sys-yellow px-5 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-black transition hover:bg-sys-yellow-bright"
+              : "ml-2 inline-flex items-center justify-center gap-2 rounded-full bg-sys-yellow px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.1em] text-black transition hover:bg-sys-yellow-bright md:ml-6"
+          }
+        >
+          {locale === "en" ? "Request a quote" : "Solicitar cotización"}
+          <svg
+            className="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+</Link>
       <a
         href="https://www.facebook.com"
         target="_blank"
