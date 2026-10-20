@@ -37,20 +37,15 @@ export default function SectorPageBottomCta({ title, subtitle, cta, href }) {
     <div className="mx-auto mt-12 w-full max-w-6xl px-4 sm:mt-14 sm:px-6 lg:mt-16 lg:max-w-[1200px]">
       <div
         className="relative overflow-hidden rounded-2xl bg-sys-black px-5 py-8 shadow-lg sm:px-8 sm:py-9 lg:px-10 lg:py-10"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(255,255,255,0.04) 25%, transparent 25%),
-            linear-gradient(225deg, rgba(255,255,255,0.03) 25%, transparent 25%),
-            linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%)`,
-          backgroundSize: "28px 28px",
-          backgroundPosition: "0 0, 14px 0, 0 14px",
-        }}
+        
       >
         <div className="absolute inset-0 bg-gradient-to-r from-sys-black/40 to-transparent" aria-hidden />
         <div className="relative z-10 flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
           <div className="flex max-w-xl gap-4 sm:gap-5">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-sys-yellow text-sys-black shadow-md sm:h-16 sm:w-16">
-              <PhoneIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-sys-yellow bg-transparent shadow-md sm:h-16 sm:w-16">
+              <PhoneIcon className="h-6 w-6 text-sys-yellow sm:h-7 sm:w-7" />
             </div>
+
             <div>
               <p className="text-lg font-bold leading-snug text-white sm:text-xl">{title}</p>
               <p className="mt-2 text-[14px] leading-relaxed text-white/85 sm:text-[15px]">
