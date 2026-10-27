@@ -1,36 +1,18 @@
 import Image from "next/image";
 
-import BreadcrumbTrail from "@/components/header/BreadcrumbTrail";
+import { StrokeIcon } from "@/components/icons/StrokeIcon";
+import HeroBreadcrumbs from "@/components/home/HeroBreadcrumbs";
 
-function IconHome(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M3 9.5 12 3l9 6.5" />
-      <path d="M5 9.5V21h14V9.5" />
-      <path d="M9 21v-6h6v6" />
-    </svg>
-  );
-}
-
-function IconUsers(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
-      <circle cx="10" cy="7" r="4" />
-      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-  );
-}
-
-function IconShield(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-      <path d="m9 12 2 2 4-4" />
-    </svg>
-  );
-}
+const STAT_ICON_PATHS = {
+  home: ["M3 9.5 12 3l9 6.5", "M5 9.5V21h14V9.5", "M9 21v-6h6v6"],
+  users: [
+    "M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2",
+    "M6 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+    "M23 21v-2a4 4 0 0 0-3-3.87",
+    "M16 3.13a4 4 0 0 1 0 7.75",
+  ],
+  shield: ["M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z", "m9 12 2 2 4-4"],
+};
 
 /**
  * @param {{
@@ -41,7 +23,6 @@ function IconShield(props) {
  *     heroAccent: { es: string; en: string };
  *     heroTagline: { es: string; en: string };
  *   };
- *   crumbs: { label: string; href?: string; isHome?: boolean }[];
  *   stats?: {
  *     icon: 'home' | 'users' | 'shield';
  *     value: string;
@@ -49,7 +30,7 @@ function IconShield(props) {
  *   }[];
  * }} props
  */
-export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
+export default function SectorCategoryHero({ locale, sector, stats }) {
   const line1 = locale === "en" ? "Projects" : "Proyectos";
   const id = "sector-hero-heading";
 
@@ -82,12 +63,6 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
 
   const heroStats = stats && stats.length > 0 ? stats : defaultStats;
 
-  const iconMap = {
-    home: IconHome,
-    users: IconUsers,
-    shield: IconShield,
-  };
-
   return (
     <section
       className="relative w-full overflow-visible bg-sys-black pb-10 sm:pb-12 lg:pb-6"
@@ -101,13 +76,8 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
               "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
           }}
         >
-          <div className="mb-5 w-full lg:mb-6">
-            <BreadcrumbTrail
-              items={crumbs}
-              layout="inline"
-              ariaLabel={locale === "en" ? "Breadcrumb" : "Migas de pan"}
-            />
-          </div>
+          <HeroBreadcrumbs />
+
           <div
             className="mb-5 h-1 w-12 shrink-0 rounded-full bg-gradient-to-r from-sys-yellow to-sys-yellow-bright shadow-[0_0_20px_rgba(232,214,0,0.35)] sm:mb-6 sm:w-14"
             aria-hidden
@@ -154,13 +124,10 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
 
           {/* Stats bar */}
           <div
-
-          
-          className="absolute inset-x-3 bottom-0 z-20 flex translate-y-1/2 items-stretch justify-between gap-2 rounded-xl bg-black/85 px-3 py-3 shadow-[0_0_30px_rgba(200,200,200,0.50)] backdrop-blur-sm sm:inset-x-4 sm:gap-3 sm:px-4 sm:py-4 lg:inset-x-6"
+            className="absolute inset-x-3 bottom-0 z-20 flex translate-y-1/2 items-stretch justify-between gap-2 rounded-xl bg-black/85 px-3 py-3 shadow-[0_0_30px_rgba(200,200,200,0.50)] backdrop-blur-sm sm:inset-x-4 sm:gap-3 sm:px-4 sm:py-4 lg:inset-x-6"
             role="list"
           >
             {heroStats.map((stat, index) => {
-              const Icon = iconMap[stat.icon];
               const [labelLine1, labelLine2] = stat.label[locale].split("\n");
 
               return (
@@ -175,7 +142,12 @@ export default function SectorCategoryHero({ locale, sector, crumbs, stats }) {
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sys-yellow/15 text-sys-yellow sm:h-11 sm:w-11"
                     aria-hidden
                   >
-                    {Icon && <Icon className="h-4 w-4 sm:h-5 sm:w-5" />}
+                    <StrokeIcon
+                      name={stat.icon}
+                      paths={STAT_ICON_PATHS[stat.icon]}
+                      className="h-4 w-4 sm:h-5 sm:w-5"
+                      strokeWidth={2}
+                    />
                   </span>
                   <span className="flex flex-col leading-tight">
                     <span className="text-lg font-bold text-white sm:text-2xl">

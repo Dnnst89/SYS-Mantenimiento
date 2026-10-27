@@ -27,7 +27,7 @@ function FacebookIcon({ className }) {
 
 export default function Navbar({ className = "", stacked = false }) {
   const pathname = usePathname();
-  const esSeccionProyectos = pathname.includes('/sectores') || pathname.includes('/sectors');
+  const isProjectsSection = pathname.includes('/sectores') || pathname.includes('/sectors');
   const locale = getLocaleFromPathname(pathname);
   const items = locale === "en" ? NAV_EN : NAV_ES;
   const switchHref = getAlternateLocalePath(pathname);

@@ -8,8 +8,8 @@ import SectorWorkCatalog from "@/components/sectors/SectorWorkCatalog";
 import { getSectorPageBottomCta } from "@/lib/sectorCategoryShowcase";
 import { getSectorPageDetail } from "@/lib/sectorPageDetail";
 
-/** @param {{ locale: 'es' | 'en'; sector: object; crumbs: { label: string; href?: string; isHome?: boolean }[] }} props */
-export default function SectorPage({ locale, sector, crumbs }) {
+/** @param {{ locale: 'es' | 'en'; sector: object }} props */
+export default function SectorPage({ locale, sector }) {
   const detail = getSectorPageDetail(locale, sector);
   if (!detail) notFound();
 
@@ -46,8 +46,7 @@ export default function SectorPage({ locale, sector, crumbs }) {
 
   return (
     <div className="flex flex-1 flex-col bg-zinc-50">
-
-      <SectorCategoryHero locale={locale} sector={sector} crumbs={crumbs} />
+      <SectorCategoryHero locale={locale} sector={sector} />
       <main className="flex-1">
         <SectorWorkCatalog
           key={detail.slug}
