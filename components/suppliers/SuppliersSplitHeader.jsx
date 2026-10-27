@@ -9,7 +9,7 @@ export default function SuppliersSplitHeader({ locale }) {
 
   return (
     <header className="flex min-h-0 flex-col lg:flex-row lg:min-h-[min(32vh,300px)]">
-      <div className="flex flex-1 flex-col justify-center bg-sys-yellow px-5 py-10 text-zinc-950 sm:px-8 sm:py-12 lg:w-[min(44%,22rem)] lg:flex-none lg:py-14 xl:w-[min(40%,24rem)]">
+      <div className="flex flex-1 flex-col justify-center bg-sys-yellow px-5 py-10 text-sys-black sm:px-8 sm:py-12 lg:w-[min(44%,22rem)] lg:flex-none lg:py-14 xl:w-[min(40%,24rem)]">
         <h1
           className="text-[clamp(2rem,6vw,3.25rem)] font-bold leading-[0.95] tracking-[-0.04em]"
           style={{
@@ -20,7 +20,7 @@ export default function SuppliersSplitHeader({ locale }) {
           {t.bannerTitle}
         </h1>
       </div>
-      <div className="flex flex-1 flex-col justify-center border-t border-white/10 bg-zinc-950 px-5 py-10 sm:px-10 sm:py-12 lg:border-l lg:border-t-0 lg:px-12 lg:py-14 xl:px-16">
+      <div className="flex flex-1 flex-col justify-center border-t border-white/10 bg-sys-black px-5 py-10 sm:px-10 sm:py-12 lg:border-l lg:border-t-0 lg:px-12 lg:py-14 xl:px-16">
         <p className="max-w-xl text-pretty text-lg font-medium leading-snug text-white/95 sm:text-xl lg:text-[1.35rem] lg:leading-[1.35]">
           {t.splitTagline}
         </p>

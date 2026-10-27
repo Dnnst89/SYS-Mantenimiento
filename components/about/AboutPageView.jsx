@@ -133,7 +133,7 @@ export default function AboutPageView({ locale }) {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(24,24,27,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(24,24,27,0.04)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_0%,#000_45%,transparent_100%)]"
+          className="sys-grid-lines-4 sys-grid-mask-hero pointer-events-none absolute inset-0"
           aria-hidden
         />
         <div
@@ -141,20 +141,20 @@ export default function AboutPageView({ locale }) {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute -right-1/4 bottom-0 h-[320px] w-[55%] rounded-full bg-zinc-900/[0.04] blur-3xl"
+          className="pointer-events-none absolute -right-1/4 bottom-0 h-[320px] w-[55%] rounded-full bg-sys-black/[0.04] blur-3xl"
           aria-hidden
         />
 
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:max-w-[1200px]">
           <div className="flex max-w-3xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8 lg:max-w-none">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-sys-yellow/40 bg-gradient-to-r from-sys-yellow/15 to-sys-yellow/5 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-800 shadow-sm shadow-sys-yellow/10 sm:px-4 sm:text-[11px]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-sys-yellow/40 bg-gradient-to-r from-sys-yellow/15 to-sys-yellow/5 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-sys-black/80 shadow-sm shadow-sys-yellow/10 sm:px-4 sm:text-[11px]">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sys-yellow shadow-[0_0_10px_rgba(232,214,0,0.7)]" />
                 {t.highlightsEyebrow}
               </span>
               <h2
                 id="about-highlights-heading"
-                className="mt-4 max-w-xl text-2xl font-semibold tracking-tight text-zinc-900 sm:mt-5 sm:max-w-2xl sm:text-3xl lg:text-[2.125rem] lg:leading-[1.15]"
+                className="mt-4 max-w-xl text-2xl font-semibold tracking-tight text-sys-black sm:mt-5 sm:max-w-2xl sm:text-3xl lg:text-[2.125rem] lg:leading-[1.15]"
                 style={{
                   fontFamily:
                     "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -180,7 +180,7 @@ export default function AboutPageView({ locale }) {
                   className={[
                     "group relative flex min-h-[280px] flex-col overflow-hidden rounded-[1.35rem] border p-6 transition duration-300 sm:min-h-[300px] sm:p-7",
                     isFeatured ?
-                      "border-zinc-800/90 bg-zinc-950 text-zinc-100 shadow-[0_24px_50px_-28px_rgba(0,0,0,0.55)] ring-1 ring-white/10 sm:min-h-[320px] lg:-translate-y-1 lg:shadow-[0_28px_60px_-24px_rgba(0,0,0,0.5)]"
+                      "border-white/10 bg-sys-black text-zinc-100 shadow-[0_24px_50px_-28px_rgba(0,0,0,0.55)] ring-1 ring-white/10 sm:min-h-[320px] lg:-translate-y-1 lg:shadow-[0_28px_60px_-24px_rgba(0,0,0,0.5)]"
                     : "border-zinc-200/90 bg-white/80 shadow-[0_2px_24px_-12px_rgba(0,0,0,0.1)] backdrop-blur-sm ring-1 ring-zinc-100/80 hover:border-sys-yellow/30 hover:shadow-[0_12px_40px_-20px_rgba(0,0,0,0.12)]",
                   ].join(" ")}
                 >
@@ -212,14 +212,14 @@ export default function AboutPageView({ locale }) {
                       className={[
                         "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-inner sm:h-16 sm:w-16",
                         isFeatured ?
-                          "bg-gradient-to-br from-sys-yellow/25 to-zinc-800/80 ring-1 ring-sys-yellow/35"
+                          "bg-gradient-to-br from-sys-yellow/25 to-sys-black/80 ring-1 ring-sys-yellow/35"
                         : "bg-gradient-to-br from-sys-yellow/20 via-white to-zinc-100 ring-1 ring-sys-yellow/25",
                       ].join(" ")}
                     >
                       <Icon
                         className={[
                           "h-7 w-7 sm:h-8 sm:w-8",
-                          isFeatured ? "text-sys-yellow" : "text-zinc-800",
+                          isFeatured ? "text-sys-yellow" : "text-sys-black/80",
                         ].join(" ")}
                       />
                     </div>
@@ -237,7 +237,7 @@ export default function AboutPageView({ locale }) {
                   <h3
                     className={[
                       "relative mt-6 text-lg font-semibold tracking-tight sm:text-xl",
-                      isFeatured ? "text-white" : "text-zinc-900",
+                      isFeatured ? "text-white" : "text-sys-black",
                     ].join(" ")}
                   >
                     {item.title}
@@ -276,7 +276,7 @@ export default function AboutPageView({ locale }) {
               </p>
               <h2
                 id="about-story-heading"
-                className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
+                className="mt-2 text-2xl font-semibold tracking-tight text-sys-black sm:text-3xl lg:text-[2rem] lg:leading-snug"
                 style={{
                   fontFamily:
                     "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -289,7 +289,7 @@ export default function AboutPageView({ locale }) {
             </div>
             <aside className="lg:col-span-5">
               <div className="rounded-2xl border border-zinc-200/90 bg-zinc-50/90 p-6 sm:p-8 lg:sticky lg:top-28">
-                <p className="text-[15px] font-medium leading-relaxed text-zinc-800">“{t.storyQuote}”</p>
+                <p className="text-[15px] font-medium leading-relaxed text-sys-black/80">“{t.storyQuote}”</p>
                 <div className="mt-6 h-px w-full bg-gradient-to-r from-sys-yellow/80 via-sys-yellow/30 to-transparent" aria-hidden />
                 <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
                   {t.storyQuoteAttribution}
@@ -307,23 +307,23 @@ export default function AboutPageView({ locale }) {
             aria-labelledby="about-mission-heading about-vision-heading"
           >
             <div
-              className="pointer-events-none absolute -inset-x-6 -inset-y-4 rounded-[2rem] bg-gradient-to-br from-sys-yellow/[0.06] via-transparent to-zinc-900/[0.04] blur-xl sm:-inset-x-10"
+              className="pointer-events-none absolute -inset-x-6 -inset-y-4 rounded-[2rem] bg-gradient-to-br from-sys-yellow/[0.06] via-transparent to-sys-black/[0.04] blur-xl sm:-inset-x-10"
               aria-hidden
             />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-zinc-200/90 bg-white shadow-[0_24px_60px_-32px_rgba(0,0,0,0.18)] ring-1 ring-zinc-950/[0.04]">
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-zinc-200/90 bg-white shadow-[0_24px_60px_-32px_rgba(0,0,0,0.18)] ring-1 ring-sys-black/[0.04]">
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-sys-yellow via-sys-yellow-bright to-sys-yellow/40"
                 aria-hidden
               />
               <div className="pointer-events-none absolute -right-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-sys-yellow/[0.06] blur-3xl" aria-hidden />
-              <div className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-zinc-900/[0.04] blur-3xl" aria-hidden />
+              <div className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-sys-black/[0.04] blur-3xl" aria-hidden />
 
               <div className="relative grid lg:grid-cols-2 lg:items-stretch">
                 <article className="relative border-b border-zinc-200/80 bg-gradient-to-br from-white via-zinc-50/80 to-zinc-100/40 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-11">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="flex items-center gap-4">
                       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sys-yellow/25 to-white shadow-inner ring-1 ring-sys-yellow/30 sm:h-16 sm:w-16">
-                        <IconMission className="h-7 w-7 text-zinc-900 sm:h-8 sm:w-8" />
+                        <IconMission className="h-7 w-7 text-sys-black sm:h-8 sm:w-8" />
                       </div>
                       <div>
                         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-400">
@@ -331,7 +331,7 @@ export default function AboutPageView({ locale }) {
                         </p>
                         <h3
                           id="about-mission-heading"
-                          className="mt-1 text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl"
+                          className="mt-1 text-xl font-semibold tracking-tight text-sys-black sm:text-2xl"
                           style={{
                             fontFamily:
                               "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -348,9 +348,9 @@ export default function AboutPageView({ locale }) {
                   </p>
                 </article>
 
-                <article className="relative overflow-hidden bg-zinc-950 p-8 text-zinc-100 sm:p-10 lg:p-11">
+                <article className="relative overflow-hidden bg-sys-black p-8 text-zinc-100 sm:p-10 lg:p-11">
                   <div
-                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:28px_28px] opacity-60 [mask-image:radial-gradient(ellipse_90%_80%_at_70%_20%,#000_20%,transparent_70%)]"
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:28px_28px] opacity-60 sys-grid-mask-dark"
                     aria-hidden
                   />
                   <div
@@ -359,7 +359,7 @@ export default function AboutPageView({ locale }) {
                   />
                   <div className="relative flex flex-wrap items-start justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sys-yellow/30 to-zinc-800 ring-1 ring-sys-yellow/35 sm:h-16 sm:w-16">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sys-yellow/30 to-sys-black ring-1 ring-sys-yellow/35 sm:h-16 sm:w-16">
                         <IconVision className="h-7 w-7 text-sys-yellow sm:h-8 sm:w-8" />
                       </div>
                       <div>
@@ -390,7 +390,7 @@ export default function AboutPageView({ locale }) {
                 </article>
 
                 <div
-                  className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-sys-yellow/40 bg-gradient-to-b from-zinc-950 to-zinc-900 shadow-[0_0_0_6px_rgba(244,244,245,1),0_12px_40px_-8px_rgba(0,0,0,0.45)] lg:flex"
+                  className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-sys-yellow/40 bg-gradient-to-b from-sys-black to-sys-black shadow-[0_0_0_6px_rgba(244,244,245,1),0_12px_40px_-8px_rgba(0,0,0,0.45)] lg:flex"
                   aria-hidden
                 >
                   <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-sys-yellow">SYS</span>
@@ -407,22 +407,22 @@ export default function AboutPageView({ locale }) {
               className="pointer-events-none absolute -inset-x-4 -top-6 h-32 rounded-full bg-sys-yellow/[0.06] blur-3xl sm:-inset-x-8"
               aria-hidden
             />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-zinc-200/90 bg-gradient-to-br from-white via-white to-zinc-50/90 p-7 shadow-[0_22px_55px_-34px_rgba(0,0,0,0.14)] ring-1 ring-zinc-950/[0.04] sm:p-9 lg:p-11">
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-zinc-200/90 bg-gradient-to-br from-white via-white to-zinc-50/90 p-7 shadow-[0_22px_55px_-34px_rgba(0,0,0,0.14)] ring-1 ring-sys-black/[0.04] sm:p-9 lg:p-11">
               <div
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(24,24,27,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(24,24,27,0.03)_1px,transparent_1px)] bg-[size:28px_28px] opacity-70 [mask-image:radial-gradient(ellipse_85%_75%_at_50%_-10%,#000_35%,transparent_65%)]"
+                className="sys-grid-lines-3 sys-grid-mask-section pointer-events-none absolute inset-0 opacity-70"
                 aria-hidden
               />
               <div className="pointer-events-none absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/3 rounded-full bg-sys-yellow/[0.07] blur-3xl" aria-hidden />
 
               <div className="relative flex max-w-3xl flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8 lg:max-w-none">
                 <div>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-sys-yellow/40 bg-gradient-to-r from-sys-yellow/14 to-transparent px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-800 shadow-sm shadow-sys-yellow/8 sm:px-4 sm:text-[11px]">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-sys-yellow/40 bg-gradient-to-r from-sys-yellow/14 to-transparent px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-sys-black/80 shadow-sm shadow-sys-yellow/8 sm:px-4 sm:text-[11px]">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sys-yellow shadow-[0_0_10px_rgba(232,214,0,0.65)]" />
                     {t.valuesEyebrow}
                   </span>
                   <h2
                     id="about-values-heading"
-                    className="mt-4 text-2xl font-semibold tracking-tight text-zinc-900 sm:mt-5 sm:text-3xl lg:text-[2.125rem] lg:leading-tight"
+                    className="mt-4 text-2xl font-semibold tracking-tight text-sys-black sm:mt-5 sm:text-3xl lg:text-[2.125rem] lg:leading-tight"
                     style={{
                       fontFamily:
                         "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -448,7 +448,7 @@ export default function AboutPageView({ locale }) {
                       className={[
                         "group relative flex min-h-0 flex-col overflow-hidden rounded-[1.25rem] border transition duration-300 sm:min-h-[380px]",
                         isSpotlight ?
-                          "border-zinc-800/90 bg-zinc-950 text-zinc-100 shadow-[0_20px_45px_-24px_rgba(0,0,0,0.5)] ring-1 ring-white/10 lg:-translate-y-1"
+                          "border-white/10 bg-sys-black text-zinc-100 shadow-[0_20px_45px_-24px_rgba(0,0,0,0.5)] ring-1 ring-white/10 lg:-translate-y-1"
                         : "border-zinc-200/90 bg-white/90 shadow-sm ring-1 ring-zinc-100/90 backdrop-blur-sm hover:border-sys-yellow/35 hover:shadow-[0_14px_36px_-22px_rgba(0,0,0,0.12)]",
                       ].join(" ")}
                     >
@@ -474,8 +474,8 @@ export default function AboutPageView({ locale }) {
                           className={[
                             "pointer-events-none absolute inset-0 bg-gradient-to-t",
                             isSpotlight ?
-                              "from-zinc-950 via-zinc-950/55 to-zinc-950/10"
-                            : "from-zinc-900/50 via-zinc-900/15 to-transparent",
+                              "from-sys-black via-sys-black/55 to-sys-black/10"
+                            : "from-sys-black/50 via-sys-black/15 to-transparent",
                           ].join(" ")}
                           aria-hidden
                         />
@@ -483,8 +483,8 @@ export default function AboutPageView({ locale }) {
                           className={[
                             "pointer-events-none absolute right-3 top-3 rounded-md px-2 py-1 font-mono text-[11px] font-bold tabular-nums backdrop-blur-sm sm:right-3.5 sm:top-3.5 sm:text-xs",
                             isSpotlight ?
-                              "bg-black/50 text-white/95 ring-1 ring-white/15"
-                            : "bg-white/90 text-zinc-800 ring-1 ring-zinc-200/90",
+                              "bg-sys-black/50 text-white/95 ring-1 ring-white/15"
+                            : "bg-white/90 text-sys-black/80 ring-1 ring-zinc-200/90",
                           ].join(" ")}
                           aria-hidden
                         >
@@ -511,14 +511,14 @@ export default function AboutPageView({ locale }) {
                             className={[
                               "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl shadow-md sm:h-14 sm:w-14",
                               isSpotlight ?
-                                "bg-gradient-to-br from-sys-yellow/30 to-zinc-800 ring-1 ring-sys-yellow/40"
+                                "bg-gradient-to-br from-sys-yellow/30 to-sys-black ring-1 ring-sys-yellow/40"
                               : "bg-gradient-to-br from-sys-yellow/25 via-white to-zinc-50 ring-1 ring-sys-yellow/30",
                             ].join(" ")}
                           >
                             <Icon
                               className={[
                                 "h-6 w-6 sm:h-7 sm:w-7",
-                                isSpotlight ? "text-sys-yellow" : "text-zinc-800",
+                                isSpotlight ? "text-sys-yellow" : "text-sys-black/80",
                               ].join(" ")}
                             />
                           </div>
@@ -527,7 +527,7 @@ export default function AboutPageView({ locale }) {
                         <h3
                           className={[
                             "relative mt-4 text-base font-semibold tracking-tight sm:mt-5 sm:text-lg",
-                            isSpotlight ? "text-white" : "text-zinc-900",
+                            isSpotlight ? "text-white" : "text-sys-black",
                           ].join(" ")}
                         >
                           {v.title}
@@ -578,7 +578,7 @@ export default function AboutPageView({ locale }) {
             <div className="mt-8 flex flex-wrap gap-3 lg:mt-0 lg:shrink-0">
               <Link
                 href={t.ctaPrimaryHref}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-sys-yellow px-6 text-sm font-semibold leading-none text-zinc-950 shadow-sm transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:h-12"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-sys-yellow px-6 text-sm font-semibold leading-none text-sys-black shadow-sm transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:h-12"
               >
                 {t.ctaPrimary}
                 <ArrowRight className="h-4 w-4" />

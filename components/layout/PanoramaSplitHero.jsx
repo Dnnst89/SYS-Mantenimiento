@@ -41,12 +41,12 @@ export default function PanoramaSplitHero({
 }) {
   return (
     <section
-      className="relative w-full overflow-hidden bg-black"
+      className="relative w-full overflow-hidden bg-sys-black"
       aria-labelledby={id}
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col px-4 sm:px-6 lg:min-h-[480px] xl:min-h-[520px] lg:max-w-[1200px] lg:flex-row lg:items-stretch">
         <div
-          className="relative z-20 order-2 flex w-full flex-col items-start justify-center bg-black pb-10 pt-4 sm:pb-11 sm:pt-5 lg:order-1 lg:w-[min(46%,520px)] lg:flex-none lg:shrink-0 lg:py-10 lg:pt-10 lg:pb-10"
+          className="relative z-20 order-2 flex w-full flex-col items-start justify-center bg-sys-black pb-10 pt-4 sm:pb-11 sm:pt-5 lg:order-1 lg:w-[min(46%,520px)] lg:flex-none lg:shrink-0 lg:py-10 lg:pt-10 lg:pb-10"
           style={{
             fontFamily:
               "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -80,7 +80,7 @@ export default function PanoramaSplitHero({
             <div className="mt-8 flex w-full justify-start sm:mt-9 lg:mt-10">
               <Link
                 href={cta.href}
-                className="group inline-flex max-w-full items-center gap-2 self-start overflow-hidden rounded-full bg-sys-yellow py-2 pl-4 pr-3 text-[13px] font-semibold leading-tight text-zinc-950 shadow-sm transition-colors duration-200 hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:py-2.5 sm:pl-5 sm:pr-3.5 sm:text-sm"
+                className="group inline-flex max-w-full items-center gap-2 self-start overflow-hidden rounded-full bg-sys-yellow py-2 pl-4 pr-3 text-[13px] font-semibold leading-tight text-sys-black shadow-sm transition-colors duration-200 hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright sm:py-2.5 sm:pl-5 sm:pr-3.5 sm:text-sm"
               >
                 <span className="min-w-0 shrink">{cta.label}</span>
                 <ArrowRightIcon className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-out will-change-transform group-hover:translate-x-1 sm:h-4 sm:w-4" />

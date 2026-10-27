@@ -27,6 +27,7 @@ function FacebookIcon({ className }) {
 
 export default function Navbar({ className = "", stacked = false }) {
   const pathname = usePathname();
+  const isProjectsSection = pathname.includes('/sectores') || pathname.includes('/sectors');
   const locale = getLocaleFromPathname(pathname);
   const items = locale === "en" ? NAV_EN : NAV_ES;
   const switchHref = getAlternateLocalePath(pathname);
@@ -38,7 +39,7 @@ export default function Navbar({ className = "", stacked = false }) {
 
   const inactiveCls = stacked ?
       "text-zinc-700 transition hover:text-sys-yellow"
-    : "text-zinc-500 after:scale-x-0 hover:text-zinc-900 hover:after:scale-x-100";
+    : "text-zinc-400 after:scale-x-0 hover:text-white hover:after:scale-x-100";
 
   const activeCls =
     stacked ? "text-sys-yellow" : "text-sys-yellow after:scale-x-100";
@@ -91,12 +92,31 @@ export default function Navbar({ className = "", stacked = false }) {
         className={
           stacked ?
             "inline-flex w-fit shrink-0 rounded-lg p-2 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow"
-          : "group ml-2 inline-flex shrink-0 rounded-lg p-1 text-zinc-400 transition hover:bg-zinc-100 hover:text-sys-yellow md:ml-4"
+          : "group ml-2 inline-flex shrink-0 rounded-lg p-1 text-zinc-400 transition hover:bg-white/10 hover:text-sys-yellow md:ml-4"
         }
         aria-label="Facebook"
       >
         <FacebookIcon className="h-5 w-5 fill-current" />
       </a>
+            
+        
+
+            {(pathname.includes("/sectores") || pathname.includes("/sectors")) && (
+          <a   
+          href={locale === "en" ? "/en/cotizar" : "/cotizar"}
+          className="bg-[#ffcc00] text-black font-bold px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#e6b800] transition"
+          >
+          <span>
+            {locale === "en" ? "Request a quote" : "Solicitar cotización"}
+          </span>
+          <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      )}
+
+
     </nav>
+    
   );
 }

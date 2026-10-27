@@ -3,10 +3,9 @@
 :root {
   --sys-yellow: #e8d600;
   --sys-yellow-bright: #f5e718;
-  --sys-black: #0a0a0a;
+  --sys-black: #09090b;
   --sys-white: #ffffff;
   --surface-muted: #f4f4f5;
-  --footer-bg: #09090b;
   --background: var(--sys-white);
   --foreground: var(--sys-black);
   --toastify-z-index: 100000;
@@ -20,7 +19,6 @@
   --color-sys-black: var(--sys-black);
   --color-sys-white: var(--sys-white);
   --color-surface-muted: var(--surface-muted);
-  --color-footer-bg: var(--footer-bg);
   --font-sans: var(--font-geist-sans);
 }
 
@@ -32,6 +30,105 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.quote-cta-gradient-desktop {
+  background: linear-gradient(
+    90deg,
+    var(--sys-black) 0%,
+    color-mix(in srgb, var(--sys-black) 96%, transparent) 5%,
+    color-mix(in srgb, var(--sys-black) 88%, transparent) 11%,
+    color-mix(in srgb, var(--sys-black) 74%, transparent) 19%,
+    color-mix(in srgb, var(--sys-black) 56%, transparent) 30%,
+    color-mix(in srgb, var(--sys-black) 36%, transparent) 42%,
+    color-mix(in srgb, var(--sys-black) 20%, transparent) 54%,
+    color-mix(in srgb, var(--sys-black) 10%, transparent) 66%,
+    color-mix(in srgb, var(--sys-black) 4%, transparent) 78%,
+    transparent 92%
+  );
+}
+
+.quote-cta-gradient-mobile {
+  background: linear-gradient(
+    180deg,
+    var(--sys-black) 0%,
+    color-mix(in srgb, var(--sys-black) 94%, transparent) 10%,
+    color-mix(in srgb, var(--sys-black) 78%, transparent) 24%,
+    color-mix(in srgb, var(--sys-black) 52%, transparent) 42%,
+    color-mix(in srgb, var(--sys-black) 28%, transparent) 58%,
+    color-mix(in srgb, var(--sys-black) 12%, transparent) 74%,
+    color-mix(in srgb, var(--sys-black) 4%, transparent) 88%,
+    transparent 100%
+  );
+}
+
+.sys-grid-lines-4 {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--sys-black) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--sys-black) 4%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+}
+
+.sys-grid-lines-3 {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--sys-black) 3%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--sys-black) 3%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+.sys-grid-lines-35 {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--sys-black) 3.5%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--sys-black) 3.5%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+}
+
+.sys-grid-mask-hero {
+  mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 0%,
+    var(--sys-black) 45%,
+    transparent 100%
+  );
+}
+
+.sys-grid-mask-section {
+  mask-image: radial-gradient(
+    ellipse 85% 75% at 50% -10%,
+    var(--sys-black) 35%,
+    transparent 65%
+  );
+}
+
+.sys-grid-mask-dark {
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 70% 20%,
+    var(--sys-black) 20%,
+    transparent 70%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

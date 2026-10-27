@@ -25,7 +25,7 @@ export default function ContactPageEs() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 lg:items-start">
             <div className="lg:col-span-5">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-sys-yellow">Escribinos</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-sys-black sm:text-3xl">
                 Contanos qué necesitás mantener.
               </h2>
               <p className="mt-4 max-w-md text-pretty text-[15px] leading-relaxed text-zinc-600 sm:text-base">
@@ -55,7 +55,7 @@ export default function ContactPageEs() {
                     href="https://maps.google.com/?q=Oficentro+Palacio,+San+José,+Costa+Rica"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:text-sys-yellow hover:decoration-sys-yellow/50"
+                    className="font-medium text-sys-black underline decoration-zinc-300 underline-offset-4 transition hover:text-sys-yellow hover:decoration-sys-yellow/50"
                   >
                     Oficentro Palacio
                   </a>
@@ -64,7 +64,7 @@ export default function ContactPageEs() {
                 <ContactCard icon={IconPhone} title="Teléfono">
                   <a
                     href="tel:+50640012999"
-                    className="font-medium tabular-nums text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:text-sys-yellow hover:decoration-sys-yellow/50"
+                    className="font-medium tabular-nums text-sys-black underline decoration-zinc-300 underline-offset-4 transition hover:text-sys-yellow hover:decoration-sys-yellow/50"
                   >
                     +(506) 4001-2999
                   </a>
@@ -78,7 +78,7 @@ export default function ContactPageEs() {
                 ¿Preferís inglés?{" "}
                 <Link
                   href="/en/contact"
-                  className="font-medium text-zinc-800 underline decoration-zinc-300 underline-offset-4 hover:text-sys-yellow hover:decoration-sys-yellow/50"
+                  className="font-medium text-sys-black/80 underline decoration-zinc-300 underline-offset-4 hover:text-sys-yellow hover:decoration-sys-yellow/50"
                 >
                   Contact (EN)
                 </Link>

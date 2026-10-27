@@ -29,15 +29,5 @@ export default async function SectorPageEs({ params }) {
   const sector = getSectorBySlugEs(slug);
   if (!sector) notFound();
 
-  return (
-    <SectorPage
-      locale="es"
-      sector={sector}
-      crumbs={[
-        { label: "Inicio", href: "/", isHome: true },
-        { label: "Proyectos", href: "/" },
-        { label: sector.titles.es },
-      ]}
-    />
-  );
+    return <SectorPage locale="es" sector={sector} />;
 }

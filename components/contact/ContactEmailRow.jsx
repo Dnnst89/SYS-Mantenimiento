@@ -50,14 +50,14 @@ export default function ContactEmailRow({ locale = "es" }) {
     <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-start sm:gap-x-3 sm:gap-y-2">
       <a
         href={`mailto:${COMPANY_EMAIL}`}
-        className="min-w-0 break-all font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition hover:text-sys-yellow hover:decoration-sys-yellow/50"
+        className="min-w-0 break-all font-medium text-sys-black underline decoration-zinc-300 underline-offset-4 transition hover:text-sys-yellow hover:decoration-sys-yellow/50"
       >
         {COMPANY_EMAIL}
       </a>
       <button
         type="button"
         onClick={copy}
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-700 transition hover:border-sys-yellow/60 hover:bg-sys-yellow/10 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow"
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-zinc-200 bg-zinc-50 px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-zinc-700 transition hover:border-sys-yellow/60 hover:bg-sys-yellow/10 hover:text-sys-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow"
         aria-label={copyLabel}
       >
         {justCopied ?

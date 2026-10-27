@@ -104,7 +104,7 @@ export default function ServicesOurProcess({ locale }) {
           {t.steps.map((step, i) => (
             <li key={step.title} className="relative flex gap-5 pl-1">
               <div className="relative z-10 flex shrink-0 flex-col items-center pt-1">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sys-yellow text-[11px] font-bold text-zinc-950 shadow-sm">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sys-yellow text-[11px] font-bold text-sys-black shadow-sm">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -129,7 +129,7 @@ export default function ServicesOurProcess({ locale }) {
             {t.steps.map((step, i) => (
               <li key={step.title} className="flex flex-col items-center text-center">
                 <div className="relative flex w-full flex-col items-center">
-                  <span className="relative z-20 mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-sys-yellow text-[11px] font-bold text-zinc-950 shadow-md ring-4 ring-sys-black">
+                  <span className="relative z-20 mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-sys-yellow text-[11px] font-bold text-sys-black shadow-md ring-4 ring-sys-black">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border-2 border-sys-yellow bg-sys-black shadow-[0_0_0_1px_rgba(0,0,0,0.35)]">

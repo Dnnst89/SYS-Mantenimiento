@@ -83,7 +83,7 @@ export default function BreadcrumbTrail({
   return (
     <nav
       aria-label={ariaLabel}
-      className="border-b border-zinc-800/90 bg-black"
+      className="border-b border-white/10 bg-sys-black"
     >
       <div className="mx-auto flex w-full max-w-6xl justify-start px-4 py-3 sm:px-6 lg:max-w-[1200px]">
         {ol}

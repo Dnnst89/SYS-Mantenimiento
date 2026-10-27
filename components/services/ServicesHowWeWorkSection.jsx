@@ -11,7 +11,7 @@ export default function ServicesHowWeWorkSection({ locale }) {
     >
       {/* fondo: malla muy suave + resplandor lateral */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.55] bg-[linear-gradient(to_right,rgba(24,24,27,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(24,24,27,0.035)_1px,transparent_1px)] bg-[size:40px_40px]"
+        className="sys-grid-lines-35 pointer-events-none absolute inset-0 opacity-[0.55]"
         aria-hidden
       />
       <div
@@ -23,7 +23,7 @@ export default function ServicesHowWeWorkSection({ locale }) {
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-zinc-900/[0.04] blur-2xl"
+        className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sys-black/[0.04] blur-2xl"
         aria-hidden
       />
 
@@ -45,7 +45,7 @@ export default function ServicesHowWeWorkSection({ locale }) {
               <span className="block text-2xl font-medium leading-snug tracking-tight text-zinc-600 sm:text-[1.65rem]">
                 {t.line1}
               </span>
-              <span className="mt-3 block text-[clamp(2.75rem,7vw,4.5rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-zinc-950">
+              <span className="mt-3 block text-[clamp(2.75rem,7vw,4.5rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-sys-black">
                 <span className="relative inline-block">
                   <span className="relative z-10">{t.line2}</span>
                   <span
@@ -78,7 +78,7 @@ export default function ServicesHowWeWorkSection({ locale }) {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <h3 className="text-xl font-semibold tracking-tight text-zinc-950 transition-colors duration-200 group-hover:text-zinc-700 sm:text-2xl">
+                      <h3 className="text-xl font-semibold tracking-tight text-sys-black transition-colors duration-200 group-hover:text-zinc-700 sm:text-2xl">
                         {item.title}
                       </h3>
                       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-zinc-500 sm:text-base">
