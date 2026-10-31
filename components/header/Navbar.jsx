@@ -27,6 +27,7 @@ function FacebookIcon({ className }) {
 
 export default function Navbar({ className = "", stacked = false }) {
   const pathname = usePathname();
+  const isProjectsSection = pathname.includes('/sectores') || pathname.includes('/sectors');
   const locale = getLocaleFromPathname(pathname);
   const items = locale === "en" ? NAV_EN : NAV_ES;
   const switchHref = getAlternateLocalePath(pathname);
@@ -97,6 +98,25 @@ export default function Navbar({ className = "", stacked = false }) {
       >
         <FacebookIcon className="h-5 w-5 fill-current" />
       </a>
+            
+        
+
+            {(pathname.includes("/sectores") || pathname.includes("/sectors")) && (
+          <a   
+          href={locale === "en" ? "/en/cotizar" : "/cotizar"}
+          className="bg-[#ffcc00] text-black font-bold px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#e6b800] transition"
+          >
+          <span>
+            {locale === "en" ? "Request a quote" : "Solicitar cotización"}
+          </span>
+          <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      )}
+
+
     </nav>
+    
   );
 }
