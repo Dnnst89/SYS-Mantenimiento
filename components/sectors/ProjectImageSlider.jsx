@@ -42,7 +42,7 @@ export default function ProjectImageSlider({ images, alt, labels }) {
               onSwiper={setMainSwiper}
               onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
               rewind
-              className="h-full w-full"
+              className="h-full w-full cursor-pointer"
             >
               {images.map((src, index) => (
                 <SwiperSlide key={`${src}-${index}`}>
