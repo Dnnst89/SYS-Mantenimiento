@@ -86,11 +86,12 @@ export default function SectorWorkCatalog({
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => setActiveCategory(id)}
-                    className={`rounded-full px-5 py-2 text-sm font-semibold transition-all ${
-                      isActive
-                        ? "bg-sys-yellow text-black shadow-sm"
-                        : "border border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50"
+                    className={`rounded-full border px-5 py-2 text-sm font-semibold transition-[background-color,border-color,color,transform] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow active:scale-[0.97] motion-reduce:transition-none ${
+                    isActive
+                    ? "border-sys-yellow bg-sys-yellow text-black shadow-sm hover:border-sys-yellow-bright hover:bg-sys-yellow-bright"
+                    : "border-zinc-200 bg-white text-zinc-700 hover:border-sys-yellow hover:bg-sys-yellow/15 hover:text-black"
                     }`}
+                  
                   >
                     {labels[id] ?? id}
                   </button>
