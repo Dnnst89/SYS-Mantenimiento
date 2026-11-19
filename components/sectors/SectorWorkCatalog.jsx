@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
+
+import SelectDropdown from "@/components/ui/SelectDropdown";
 
 import ProjectCard from "./ProjectCard";
 
@@ -14,6 +16,7 @@ export default function SectorWorkCatalog({
   locale = "es",
 }) {
   const copy = translations?.catalog ?? {};
+  const sortLabelId = useId();
 
   const labels = {
     all: copy.all || "Todos",
@@ -23,6 +26,11 @@ export default function SectorWorkCatalog({
     construccion: copy.construction || "Construcción",
     otros: copy.others || "Otros",
   };
+
+  const sortOptions = [
+    { value: "newest", label: copy.mostRecent || "Más recientes" },
+    { value: "oldest", label: copy.oldest || "Más antiguos" },
+  ];
 
   const [activeCategory, setActiveCategory] = useState("all");
   const [sortBy, setSortBy] = useState("newest");
@@ -94,18 +102,15 @@ export default function SectorWorkCatalog({
           )}
 
           <div className="flex items-center gap-2 self-end md:self-auto">
-            <label htmlFor="sector-sort" className="text-sm font-medium text-zinc-500">
+            <span id={sortLabelId} className="text-sm font-medium text-zinc-500">
               {copy.orderBy || "Ordenar por:"}
-            </label>
-            <select
-              id="sector-sort"
+            </span>
+            <SelectDropdown
+              labelId={sortLabelId}
               value={sortBy}
-              onChange={(event) => setSortBy(event.target.value)}
-              className="rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 outline-none transition-all"
-            >
-              <option value="newest">{copy.mostRecent || "Más recientes"}</option>
-              <option value="oldest">{copy.oldest || "Más antiguos"}</option>
-            </select>
+              options={sortOptions}
+              onChange={setSortBy}
+            />
           </div>
         </div>
 
