@@ -17,13 +17,13 @@ export default function ServicesScopeSection({ locale }) {
           </p>
           <h2
             id="services-scope-heading"
-            className="mt-3 text-3xl font-semibold leading-[1.08] tracking-tight text-zinc-900 sm:text-4xl"
+            className="mt-3 text-3xl font-semibold leading-[1.08] tracking-tight text-sys-black sm:text-4xl"
             style={{
               fontFamily:
                 "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
             }}
           >
-            <span className="text-zinc-900">{t.line1} </span>
+            <span className="text-sys-black">{t.line1} </span>
             <span className="text-sys-yellow">{t.line2}</span>
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-zinc-600 sm:text-base">{t.lead}</p>
@@ -39,7 +39,7 @@ export default function ServicesScopeSection({ locale }) {
                 className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-sys-yellow shadow-[0_0_0_3px_rgba(232,214,0,0.2)] transition group-hover:scale-110"
                 aria-hidden
               />
-              <span className="text-[15px] font-medium leading-snug text-zinc-900">{label}</span>
+              <span className="text-[15px] font-medium leading-snug text-sys-black">{label}</span>
             </li>
           ))}
         </ul>

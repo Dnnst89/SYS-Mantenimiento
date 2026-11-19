@@ -54,7 +54,7 @@ export default function MobileNavigation() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="relative z-70 rounded-lg border border-zinc-200 bg-white p-2 text-zinc-800 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
+        className="relative z-70 rounded-lg border border-white/15 bg-transparent p-2 text-white shadow-sm transition hover:border-white/25 hover:bg-white/10"
         aria-label={open ? "Cerrar menú" : "Abrir menú"}
       >
         <span className="block h-0.5 w-5 rounded-full bg-current" />

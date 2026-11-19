@@ -14,7 +14,9 @@ export default function HomeLanding({ locale }) {
     <div className="flex flex-1 flex-col bg-white">
       <HomeHero locale={locale} />
       <BrandsCarousel locale={locale} />
+     <div id="categorias" className="scroll-mt-28">
       <ProjectsCategoryGrid locale={locale} />
+    </div>
       <WhyChooseUs locale={locale} />
       <div className="bg-surface-muted px-4 py-12 sm:px-6 sm:py-14">
         <div className="mx-auto w-full max-w-6xl lg:max-w-[1200px]">
