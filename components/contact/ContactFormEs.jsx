@@ -10,6 +10,9 @@ import {
 } from "@/lib/contactFormValidation";
 import { COMPANY_EMAIL } from "@/lib/companyEmail";
 
+import PhoneField from "@/components/ui/PhoneField";
+import { formatPhoneForSubmit } from "@/lib/phone";
+
 const TOPICS = [
   { value: "general", label: "Consulta general" },
   { value: "quote", label: "Solicitar cotización" },
@@ -70,7 +73,7 @@ export default function ContactFormEs() {
           name: name.trim(),
           company: company.trim(),
           email: email.trim(),
-          phone: phone.trim(),
+           phone: formatPhoneForSubmit(phone),
           topic: topicLabel,
           message: message.trim(),
           locale: "es",
@@ -238,28 +241,17 @@ export default function ContactFormEs() {
               <label htmlFor="contacto-telefono" className="block text-xs font-semibold uppercase tracking-wide text-zinc-500">
                 Teléfono <span className="font-normal normal-case text-zinc-400">(opcional)</span>
               </label>
-              <input
-                id="contacto-telefono"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                maxLength={32}
-                disabled={inputsDisabled}
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
+                <PhoneField
+                  id="contacto-telefono"
+                  value={phone}
+                  onChange={(value) => {
+                  setPhone(value);
                   clearField("phone");
-                }}
-                aria-invalid={errors.phone ? "true" : "false"}
-                aria-describedby={errors.phone ? "contacto-telefono-error" : undefined}
-                className={fieldClass(!!errors.phone)}
-                placeholder="+506 …"
+                  }}
+                  error={errors.phone}
+                 disabled={inputsDisabled}
+                 locale="es"
               />
-              {errors.phone ?
-                <p id="contacto-telefono-error" className="mt-1.5 text-sm text-red-600">
-                  {errors.phone}
-                </p>
-              : null}
             </div>
           </div>
 

@@ -10,6 +10,9 @@ import {
 } from "@/lib/contactFormValidation";
 import { COMPANY_EMAIL } from "@/lib/companyEmail";
 
+import PhoneField from "@/components/ui/PhoneField";
+import { formatPhoneForSubmit } from "@/lib/phone";
+
 const TOPICS = [
   { value: "general", label: "General inquiry" },
   { value: "quote", label: "Request a quote" },
@@ -70,7 +73,7 @@ export default function ContactFormEn() {
           name: name.trim(),
           company: company.trim(),
           email: email.trim(),
-          phone: phone.trim(),
+          phone: formatPhoneForSubmit(phone),
           topic: topicLabel,
           message: message.trim(),
           locale: "en",
@@ -238,28 +241,17 @@ export default function ContactFormEn() {
               <label htmlFor="contact-phone" className="block text-xs font-semibold uppercase tracking-wide text-zinc-500">
                 Phone <span className="font-normal normal-case text-zinc-400">(optional)</span>
               </label>
-              <input
+                            <PhoneField
                 id="contact-phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                maxLength={32}
-                disabled={inputsDisabled}
                 value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
+                onChange={(value) => {
+                  setPhone(value);
                   clearField("phone");
                 }}
-                aria-invalid={errors.phone ? "true" : "false"}
-                aria-describedby={errors.phone ? "contact-phone-error" : undefined}
-                className={fieldClass(!!errors.phone)}
-                placeholder="+506 …"
+                error={errors.phone}
+                disabled={inputsDisabled}
+                locale="en"
               />
-              {errors.phone ?
-                <p id="contact-phone-error" className="mt-1.5 text-sm text-red-600">
-                  {errors.phone}
-                </p>
-              : null}
             </div>
           </div>
 
