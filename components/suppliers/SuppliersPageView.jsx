@@ -31,7 +31,7 @@ function PartnerLogoCard({ src, alt, name }) {
           className="absolute left-0 top-0 h-full w-1 rounded-r-full bg-sys-yellow opacity-0 transition duration-300 group-hover:opacity-100"
           aria-hidden
         />
-        <p className="text-center text-[13px] font-semibold leading-snug tracking-tight text-zinc-900 sm:text-sm">
+        <p className="text-center text-[13px] font-semibold leading-snug tracking-tight text-sys-black sm:text-sm">
           {name}
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function SuppliersPageView({ locale }) {
               </div>
               <h2
                 id="suppliers-partners-heading"
-                className="text-balance text-2xl font-semibold leading-[1.12] tracking-tight text-zinc-950 sm:text-3xl lg:text-[2.125rem]"
+                className="text-balance text-2xl font-semibold leading-[1.12] tracking-tight text-sys-black sm:text-3xl lg:text-[2.125rem]"
                 style={{
                   fontFamily:
                     "var(--font-display-hero), var(--font-geist-sans), system-ui, sans-serif",
@@ -106,7 +106,7 @@ export default function SuppliersPageView({ locale }) {
         </div>
       </section>
 
-      <section className="bg-zinc-950 px-5 py-12 text-white sm:px-8 sm:py-14 lg:px-12" aria-labelledby="suppliers-cta-heading">
+      <section className="bg-sys-black px-5 py-12 text-white sm:px-8 sm:py-14 lg:px-12" aria-labelledby="suppliers-cta-heading">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <div className="max-w-xl">
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-sys-yellow/90">{t.ctaEyebrow}</p>
@@ -125,7 +125,7 @@ export default function SuppliersPageView({ locale }) {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
             <Link
               href={t.contactHref}
-              className="inline-flex h-12 items-center justify-center bg-sys-yellow px-8 text-sm font-semibold text-zinc-950 transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright"
+              className="inline-flex h-12 items-center justify-center bg-sys-yellow px-8 text-sm font-semibold text-sys-black transition hover:bg-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow-bright"
             >
               {t.ctaPrimary}
             </Link>

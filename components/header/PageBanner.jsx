@@ -45,7 +45,7 @@ export default function PageBanner({
 
   const homeIconOnlyLinkClass = breadcrumbOnDark ?
     "inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 p-2.5 text-sys-yellow shadow-sm transition hover:border-sys-yellow/50 hover:bg-white/10 hover:text-sys-yellow-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow"
-  : "inline-flex items-center justify-center rounded-lg border border-zinc-200 bg-white p-2.5 text-zinc-950 shadow-sm transition hover:border-sys-yellow/60 hover:text-sys-yellow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow";
+  : "inline-flex items-center justify-center rounded-lg border border-zinc-200 bg-white p-2.5 text-sys-black shadow-sm transition hover:border-sys-yellow/60 hover:text-sys-yellow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sys-yellow";
 
   return (
     <div className="border-b border-zinc-100 bg-gradient-to-b from-white to-zinc-50/80">
@@ -81,7 +81,7 @@ export default function PageBanner({
                 SYS
               </span>
             </div>
-            <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl md:text-[2.75rem] md:leading-[1.08]">
+            <h1 className="text-3xl font-semibold tracking-tight text-sys-black sm:text-4xl md:text-[2.75rem] md:leading-[1.08]">
               {title}
             </h1>
             <div className="mt-4 h-px w-14 bg-sys-yellow" aria-hidden />
@@ -92,7 +92,7 @@ export default function PageBanner({
               aria-label="Migas de pan"
               className="flex shrink-0 items-center gap-2 text-[13px] text-zinc-500"
             >
-              <HomeIcon className="h-[17px] w-[17px] shrink-0 text-zinc-900" />
+              <HomeIcon className="h-[17px] w-[17px] shrink-0 text-sys-black" />
               <ol className="flex flex-wrap items-center gap-1">
                 {items.map((item, idx) => {
                   const isLast = idx === items.length - 1;

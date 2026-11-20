@@ -13,7 +13,7 @@ export default function QuoteWizardPageView({ locale }) {
 
   return (
     <div className="flex flex-1 flex-col">
-      <main className="relative flex-1 overflow-hidden bg-zinc-950 text-white">
+      <main className="relative flex-1 overflow-hidden bg-sys-black text-white">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_95%_70%_at_8%_-15%,rgba(232,214,0,0.16),transparent_58%)]"
           aria-hidden
